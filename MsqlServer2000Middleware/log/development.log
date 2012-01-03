@@ -1,7 +1,0 @@
-  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
-  [4;35;1mSQL (0.1ms)[0m   [0mSET standard_conforming_strings = on[0m
-  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
-
-
-Processing Rails::InfoController#properties (for 127.0.0.1 at 2012-01-02 20:42:26) [GET]
-Completed in 57ms (View: 6, DB: 0) | 200 OK [http://localhost/rails/info/properties]
