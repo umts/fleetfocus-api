@@ -18,7 +18,7 @@ ActiveRecord::Base.establish_connection(
   :host => 'FILL_THIS_IN',
   :database => 'FILL_THIS_IN',
   :username => 'FILL_THIS_IN',
-  :password => 'FILL_THIS_IN',
+  :password => 'FILL_THIS_IN'
 )
 
 # dt=Datetime.now
