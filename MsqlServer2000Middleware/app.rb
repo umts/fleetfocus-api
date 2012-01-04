@@ -5,9 +5,10 @@ require 'activerecord-sqlserver-adapter'
 require 'tiny_tds'
 require 'haml'
 
-#class Fueltask < ActiveRecord::Base
-#  establish_connection :fueltask
-#end
+
+############################################################
+# This section establishes the Msql Server 2000 connection #
+############################################################
 
 ActiveRecord::Base.establish_connection(
   :adapter => 'sqlserver',
@@ -17,14 +18,71 @@ ActiveRecord::Base.establish_connection(
   :password => 'FILL_THIS_IN',
 )
 
+##########################################################################################
+# This section takes the parameters from url calls and obtains data from the msql server #
+##########################################################################################
+
 class SqlServer2000Connection < ActiveRecord::Base
   set_table_name 'emsdba.FTK_MAIN'
   
+  # Obtain all records for a vehicle by its name
   def self.find_all_for_vehicle_name(vehicle_name, options = {})
     #begin
       fuelings = with_scope :find => options do
         find(:all, 
         :conditions => ["EQ_equip_no = ?", vehicle_name]
+        )
+      end
+      return fuelings
+    #rescue
+    #end
+  end
+  
+  # Obtain all records for a vehicle by its id
+  def self.find_all_for_vehicle_id(vehicle_id, options = {})
+    #begin
+      fuelings = with_scope :find => options do
+        find(:all, 
+        :conditions => ["EQ_equip_no = ?", vehicle_id]
+        )
+      end
+      return fuelings
+    #rescue
+    #end
+  end
+  
+  # Obtain all records for a vehicle by its id which occur after the provided datetime
+  def self.find_all_for_vehicle_id_and_datetime(vehicle_id, datetime, options = {})
+    #begin
+      fuelings = with_scope :find => options do
+        find(:all, 
+        :conditions => ["EQ_equip_no = ?", vehicle_id, datetime]
+        )
+      end
+      return fuelings
+    #rescue
+    #end
+  end
+  
+  # Obtain records for all vehicles which occur after the provided datetime
+  def self.find_all_vehicles_for_datetime(datetime, options = {})
+    #begin
+      fuelings = with_scope :find => options do
+        find(:all, 
+        :conditions => ["EQ_equip_no = ?", datetime]
+        )
+      end
+      return fuelings
+    #rescue
+    #end
+  end
+  
+  # Obtain records for all vehicles which occur between two dates
+  def self.find_all_vehicles_for_daterange(start_datetime, end_datetime, options = {})
+    #begin
+      fuelings = with_scope :find => options do
+        find(:all, 
+        :conditions => ["EQ_equip_no = ?", start_datetime, end_datetime]
         )
       end
       return fuelings
@@ -42,30 +100,64 @@ class SqlServer2000Connection < ActiveRecord::Base
     end
     return fuelings
   end
-
-  #def mileage
-  #  return Mileage.new(:mileage => super, :time_at => time_at)
-  #end
 end
 
 
+###################################################
+# This section is the collection of routing api's #
+###################################################
+
+# The root URL
 get '/' do
-  @stuff = SqlServer2000Connection.find_all_for_vehicle_name(3201, :order => "ftk_date desc")
+  @root = "This is the root URL"
   haml :index
 end
 
-get '/vehicle' do
-  @stuff = Fueltask.find_all_for_vehicle_name(:first)
-  haml :index
+# Obtain all records for a vehicle by its id
+get '/vehicle/:id' do
+  @vehicle_by_id = SqlServer2000Connection.find_all_for_vehicle_id("#{params[:id]}", :order => "ftk_date desc")
+  #@vehicle_by_id = "Seeking records of vehicle #{params[:id]}"
+  haml :vehicle_id
+end
+
+# Obtain all records for a vehicle by its id which occur after the provided datetime
+get '/vehicle/:id/:datetime' do
+  #@vehicle_by_id_datetime = SqlServer2000Connection.find_all_for_vehicle_id_and_datetime("#{params[:id]}", "#{params[:datetime]}", :order => "ftk_date desc")
+  @vehicle_by_id_datetime = "Seeking records of vehicle #{params[:id]} which come after #{params[:datetime]}"
+  haml :vehicle_id_datetime
+end
+
+# Obtain records for all vehicles which occur after the provided datetime
+get '/all/:datetime' do
+  #@all_vehicles_by_datetime = SqlServer2000Connection.find_all_vehicles_for_datetime("#{params[:datetime]}", :order => "ftk_date desc")
+  @all_vehicles_by_datetime = "Seeking records for all vehicles which come after #{params[:datetime]}"
+  haml :all_vehicles_datetime
+end
+
+# Obtain records for all vehicles which occur between two dates
+get '/all/:start_datetime/:end_datetime' do
+  #@all_vehicles_by_daterange = SqlServer2000Connection.find_all_vehicles_for_daterange("#{params[:start_datetime]}", "#{params[:end_datetime]}", :order => "ftk_date desc")
+  @all_vehicles_by_daterange = "Seeking records for all vehicles which come after #{params[:start_datetime]} and before #{params[:end_datetime]}"
+  haml :all_vehicles_daterange
 end
 
 __END__
+
+
+###########################################################
+# This section handles rendering the views for each route #
+###########################################################
 
 @@index
 %html
   %head
   %body
-    =for thing in @stuff
+    =@root
+@@vehicle_id
+%html
+  %head
+  %body
+    =for thing in @vehicle_by_id
       =thing.EQ_equip_no
       ,
       =thing.fuel_focus_row_id
@@ -76,4 +168,18 @@ __END__
       ,
       =thing.mileage
       <br>
-      
+@@vehicle_id_datetime
+%html
+  %head
+  %body
+    =@vehicle_by_id_datetime
+@@all_vehicles_datetime
+%html
+  %head
+  %body
+    =@all_vehicles_by_datetime
+@@all_vehicles_daterange
+%html
+  %head
+  %body
+    =@all_vehicles_by_daterange     
