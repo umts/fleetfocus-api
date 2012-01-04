@@ -4,7 +4,10 @@ require 'active_record'
 require 'activerecord-sqlserver-adapter'
 require 'tiny_tds'
 require 'haml'
+require 'uri'
 
+#URI.incode
+#URI.decode
 
 ############################################################
 # This section establishes the Msql Server 2000 connection #
@@ -18,6 +21,8 @@ ActiveRecord::Base.establish_connection(
   :password => 'FILL_THIS_IN',
 )
 
+# dt=Datetime.now
+# dt.strftime('%s')
 ##########################################################################################
 # This section takes the parameters from url calls and obtains data from the msql server #
 ##########################################################################################
