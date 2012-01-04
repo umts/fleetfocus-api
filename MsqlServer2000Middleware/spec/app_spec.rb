@@ -18,8 +18,9 @@ describe "My App" do
   end
   
   it "should respond to /vehicle/:id/:datetime" do
-    get '/vehicle/3201/2011-12-14'
-    assert last_response.body.include?("3201" && "2011-12-14")
+    dateTime = Date.new(2011,12,13).strftime('%s')
+    get "/vehicle/3201/#{dateTime}"
+    assert last_response.body.include?("3201" && "2011/12/14 19:40:51 -0500")
   end
   
   it "should respond to /all/:datetime" do

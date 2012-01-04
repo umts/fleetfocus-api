@@ -6,6 +6,8 @@ require 'rack/test'
 require 'spec'
 require 'spec/autorun'
 require 'spec/interop/test'
+require 'json'
+require 'date'
 
 # set test environment
 set :environment, :test

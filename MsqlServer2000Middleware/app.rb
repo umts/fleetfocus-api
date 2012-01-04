@@ -5,6 +5,8 @@ require 'activerecord-sqlserver-adapter'
 require 'tiny_tds'
 require 'haml'
 require 'uri'
+require 'json'
+require 'date'
 
 #URI.incode
 #URI.decode
@@ -61,7 +63,7 @@ class SqlServer2000Connection < ActiveRecord::Base
     #begin
       fuelings = with_scope :find => options do
         find(:all, 
-        :conditions => ["EQ_equip_no = ?", vehicle_id, datetime]
+        :conditions => ["EQ_equip_no = ? AND ftk_date > ?", vehicle_id, Time.at(datetime.to_f)]
         )
       end
       return fuelings
@@ -105,6 +107,7 @@ class SqlServer2000Connection < ActiveRecord::Base
     end
     return fuelings
   end
+  
 end
 
 
@@ -122,14 +125,18 @@ end
 get '/vehicle/:id' do
   @vehicle_by_id = SqlServer2000Connection.find_all_for_vehicle_id("#{params[:id]}", :order => "ftk_date desc")
   #@vehicle_by_id = "Seeking records of vehicle #{params[:id]}"
-  haml :vehicle_id
+  content_type :json
+  @vehicle_by_id.to_json
+  #haml :vehicle_id
 end
 
 # Obtain all records for a vehicle by its id which occur after the provided datetime
 get '/vehicle/:id/:datetime' do
-  #@vehicle_by_id_datetime = SqlServer2000Connection.find_all_for_vehicle_id_and_datetime("#{params[:id]}", "#{params[:datetime]}", :order => "ftk_date desc")
-  @vehicle_by_id_datetime = "Seeking records of vehicle #{params[:id]} which come after #{params[:datetime]}"
-  haml :vehicle_id_datetime
+  @vehicle_by_id_datetime = SqlServer2000Connection.find_all_for_vehicle_id_and_datetime("#{params[:id]}", "#{params[:datetime]}", :order => "ftk_date desc")
+  #@vehicle_by_id_datetime = "Seeking records of vehicle #{params[:id]} which come after #{params[:datetime]}"
+  content_type :json
+  @vehicle_by_id_datetime.to_json
+  #haml :vehicle_id_datetime
 end
 
 # Obtain records for all vehicles which occur after the provided datetime
@@ -158,21 +165,13 @@ __END__
   %head
   %body
     =@root
+
 @@vehicle_id
 %html
   %head
   %body
-    =for thing in @vehicle_by_id
-      =thing.EQ_equip_no
-      ,
-      =thing.fuel_focus_row_id
-      ,
-      =thing.time_at_insertion
-      ,
-      =thing.amount
-      ,
-      =thing.mileage
-      <br>
+    =@vehicle_by_id.to_json
+
 @@vehicle_id_datetime
 %html
   %head
