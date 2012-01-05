@@ -8,7 +8,6 @@ require 'uri'
 require 'json'
 require 'date'
 
-
 ############################################################
 # This section establishes the Msql Server 2000 connection #
 ############################################################
@@ -118,13 +117,18 @@ class SqlServer2000Connection < ActiveRecord::Base
         return fuelings
     #rescue
     #end
-  end    
+  end
+      
 end
 
 
 ################################################################################################################
 # This section is the collection of routing api's. The first matching route in this list will be called first. #
 ################################################################################################################
+
+before do
+  
+end
 
 # Obtain all records for a vehicle by its id
 get '/vehicle/:id' do
@@ -169,6 +173,27 @@ get '/all/:start_datetime/:end_datetime' do
   content_type :json
   @all_vehicles_by_daterange.to_json
   #haml :all_vehicles_daterange
+end
+
+get '/verify' do
+  @connected = true
+  
+  begin
+    @vehicle_by_id = SqlServer2000Connection.find_all_for_vehicle_id(3201, :limit => 1)
+  rescue
+    ActiveRecord::Base.establish_connection(
+      :adapter => 'sqlserver',
+      :host => 'FILL_THIS_IN',
+      :database => 'FILL_THIS_IN',
+      :username => 'FILL_THIS_IN',
+      :password => 'FILL_THIS_IN'
+    )
+    @connected = false
+  end
+  
+  #content_type :json
+  #@conected.to_json
+  haml :verify
 end
 
 # The root URL
@@ -221,4 +246,11 @@ __END__
 %html
   %head
   %body
-    =@all_vehicles_by_daterange.to_json     
+    =@all_vehicles_by_daterange.to_json
+
+@@verify
+%html
+  %head
+    %body
+      =@connected
+     

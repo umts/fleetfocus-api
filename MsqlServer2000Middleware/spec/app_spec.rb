@@ -43,4 +43,9 @@ describe "My App" do
     assert last_response.body.include?("2011/12/12")
   end
   
+  it "/verify" do
+    get "/verify"
+    assert last_response.body.include?("True")
+  end
+  
 end
