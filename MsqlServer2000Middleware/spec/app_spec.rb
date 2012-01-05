@@ -23,16 +23,24 @@ describe "My App" do
     assert last_response.body.include?("3201" && "2011/12/14 19:40:51 -0500")
   end
   
+  it "should respond to /vehicle/:id/:start_datetime/:end_datetime" do
+    startdateTime = Date.new(2011,11,9).strftime('%s')
+    enddateTime = Date.new(2011,12,13).strftime('%s')
+    get "/vehicle/3201/#{startdateTime}/#{enddateTime}"
+    assert last_response.body.include?("3201")
+  end
+  
   it "should respond to /all/:datetime" do
-    get '/all/2011-12-14'
-    assert last_response.body.include?("2011-12-14")
+    dateTime = Date.new(2011,12,13).strftime('%s')
+    get "/all/#{dateTime}"
+    assert last_response.body.include?("2011/12/14 19:40:51 -0500")
   end
   
   it "/all/:start_datetime/:end_datetime" do
-    get '/all/2011-12-12/2011-12-14'
-    assert last_response.body.include?("2011-12-12" && "2011-12-14")
+    startdateTime = Date.new(2011,11,9).strftime('%s')
+    enddateTime = Date.new(2011,12,13).strftime('%s')
+    get "/all/#{startdateTime}/#{enddateTime}"
+    assert last_response.body.include?("2011/12/12")
   end
   
 end
-
-# Need to test that the dates provided meet the required syntax and if not then the search exits gracefully
