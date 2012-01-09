@@ -26,71 +26,172 @@ ActiveRecord::Base.establish_connection(
 
 class SqlServer2000Connection < ActiveRecord::Base
   set_table_name 'emsdba.FTK_MAIN'
+  @@have_tried_to_reconnect = false;
 
   # Obtain all records for a vehicle by its id
   def self.find_all_for_vehicle_id(vehicle_id, options = {})
-    #begin
+    begin
       fuelings = with_scope :find => options do
         find(:all, 
         :conditions => ["EQ_equip_no = ?", vehicle_id]
         )
       end
-      return fuelings
-    #rescue 
-    #end
+      if fuelings == []
+        @@have_tried_to_reconnect = false
+        fuelings = "Your query has returned no results. Please contact MIS for further assitance. (vehicle by id)"
+      else
+        @@have_tried_to_reconnect = false
+        fuelings
+      end
+    rescue 
+      if @@have_tried_to_reconnect
+        @@have_tried_to_reconnect = false
+        fuelings = "You  are currently not connected to the database. Please contact MIS for further assitance. (vehicle by id)"
+      else
+        ActiveRecord::Base.establish_connection(
+          :adapter => 'sqlserver',
+          :host => 'FILL_THIS_IN',
+          :database => 'FILL_THIS_IN',
+          :username => 'FILL_THIS_IN',
+          :password => 'FILL_THIS_IN'
+        )
+        @@have_tried_to_reconnect = true
+        retry
+      end
+    end
   end
   
   # Obtain all records for a vehicle by its id which occur after the provided datetime
   def self.find_all_for_vehicle_id_and_datetime(vehicle_id, datetime, options = {})
-    #begin
+    begin
       fuelings = with_scope :find => options do
         find(:all, 
         :conditions => ["EQ_equip_no = ? AND ftk_date > ?", vehicle_id, Time.at(datetime.to_f)]
         )
+        end
+        if fuelings == []
+          @@have_tried_to_reconnect = false
+          fuelings = "Your query has returned no results. Please contact MIS for further assitance. (vehicle by id and datetime)"
+        else
+          @@have_tried_to_reconnect = false
+          fuelings
+        end
+      rescue 
+        if @@have_tried_to_reconnect
+          @@have_tried_to_reconnect = false
+          fuelings = "You  are currently not connected to the database. Please contact MIS for further assitance. (vehicle by id and datetime)"
+        else
+          ActiveRecord::Base.establish_connection(
+            :adapter => 'sqlserver',
+            :host => 'FILL_THIS_IN',
+            :database => 'FILL_THIS_IN',
+            :username => 'FILL_THIS_IN',
+            :password => 'FILL_THIS_IN'
+          )
+          @@have_tried_to_reconnect = true
+          retry
+        end
       end
-      return fuelings
-    #rescue
-    #end
-  end
-  
-  # Obtain records for all vehicles which occur after the provided datetime
-  def self.find_all_vehicles_for_datetime(datetime, options = {})
-    #begin
-      fuelings = with_scope :find => options do
-        find(:all, 
-        :conditions => ["ftk_date > ?", Time.at(datetime.to_f)]
-        )
-      end
-      return fuelings
-    #rescue
-    #end
-  end
-  
+    end
+    
   # Obtain records for all vehicles which occur between the two dates
   def self.find_all_for_vehicle_id_and_daterange(vehicle_id, start_datetime, end_datetime, options = {})
-    #begin
+    begin
       fuelings = with_scope :find => options do
         find(:all, 
         :conditions => ["EQ_equip_no = ? AND ftk_date > ? AND ftk_date < ?", vehicle_id, Time.at(start_datetime.to_f), Time.at(end_datetime.to_f)]
         )
+        end
+        if fuelings == []
+          @@have_tried_to_reconnect = false
+          fuelings = "Your query has returned no results. Please contact MIS for further assitance. (vehicle by id and daterange)"
+        else
+          @@have_tried_to_reconnect = false
+          fuelings
+        end
+      rescue 
+        if @@have_tried_to_reconnect
+          @@have_tried_to_reconnect = false
+          fuelings = "You  are currently not connected to the database. Please contact MIS for further assitance. (vehicle by id and daterange)"
+        else
+          ActiveRecord::Base.establish_connection(
+            :adapter => 'sqlserver',
+            :host => 'FILL_THIS_IN',
+            :database => 'FILL_THIS_IN',
+            :username => 'FILL_THIS_IN',
+            :password => 'FILL_THIS_IN'
+          )
+          @@have_tried_to_reconnect = true
+          retry
+        end
       end
-      return fuelings
-    #rescue
-    #end
-  end
+    end
   
+  # Obtain records for all vehicles which occur after the provided datetime
+  def self.find_all_vehicles_for_datetime(datetime, options = {})
+    begin
+      fuelings = with_scope :find => options do
+        find(:all, 
+        :conditions => ["ftk_date > ?", Time.at(datetime.to_f)]
+        )
+        end
+        if fuelings == []
+          @@have_tried_to_reconnect = false
+          fuelings = "Your query has returned no results. Please contact MIS for further assitance. (all vehicles for datetime)"
+        else
+          @@have_tried_to_reconnect = false
+          fuelings
+        end
+      rescue 
+        if @@have_tried_to_reconnect
+          @@have_tried_to_reconnect = false
+          fuelings = "You  are currently not connected to the database. Please contact MIS for further assitance. (all vehicles for datetime)"
+        else
+          ActiveRecord::Base.establish_connection(
+            :adapter => 'sqlserver',
+            :host => 'FILL_THIS_IN',
+            :database => 'FILL_THIS_IN',
+            :username => 'FILL_THIS_IN',
+            :password => 'FILL_THIS_IN'
+          )
+          @@have_tried_to_reconnect = true
+          retry
+        end
+      end
+    end
+    
   # Obtain records for all vehicles which occur between two dates
   def self.find_all_vehicles_for_daterange(start_datetime, end_datetime, options = {})
-    #begin
+    begin
       fuelings = with_scope :find => options do
         find(:all, 
         :conditions => ["ftk_date > ? AND ftk_date < ?", Time.at(start_datetime.to_f), Time.at(end_datetime.to_f)]
         )
+        end
+        if fuelings == []
+          @@have_tried_to_reconnect = false
+          fuelings = "Your query has returned no results. Please contact MIS for further assitance. (all vehicles for daterange)"
+        else
+          @@have_tried_to_reconnect = false
+          fuelings
+        end
+      rescue 
+        if @@have_tried_to_reconnect
+          @@have_tried_to_reconnect = false
+          fuelings = "You  are currently not connected to the database. Please contact MIS for further assitance. (all vehicles for daterange)"
+        else
+          ActiveRecord::Base.establish_connection(
+            :adapter => 'sqlserver',
+            :host => 'FILL_THIS_IN',
+            :database => 'FILL_THIS_IN',
+            :username => 'FILL_THIS_IN',
+            :password => 'FILL_THIS_IN'
+          )
+          @@have_tried_to_reconnect = true
+          retry
+        end
       end
-      return fuelings
-    #rescue
-    #end
-  end
+    end
   
   #overriding rails find method to work with fueltask
   def self.find(*args)
@@ -166,7 +267,7 @@ get '/verify' do
   @connected = true
   
   begin
-    @vehicle_by_id = SqlServer2000Connection.find_all_for_vehicle_id(3201, :limit => 1)
+    @vehicle_by_id = SqlServer2000Connection.column_names
   rescue
     ActiveRecord::Base.establish_connection(
       :adapter => 'sqlserver',
@@ -185,11 +286,11 @@ end
 
 # The root URL
 get '/*' do
-  403
+  404
 end
 
 error 404 do
-  'Webpage Not Found '
+  'Eror 404. Webpage Not Found.'
 end
 
 __END__

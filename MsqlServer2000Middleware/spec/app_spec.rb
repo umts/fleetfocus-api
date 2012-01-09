@@ -8,8 +8,8 @@ describe "My App" do
   end
 
   it "should respond to /" do
-    get '/'
-    last_response.should be_ok
+    get '/*'
+    assert last_response.body.include?("Eror 404. Webpage Not Found.")
   end
 
   it "should respond to /vehicle/:id" do
@@ -45,7 +45,7 @@ describe "My App" do
   
   it "/verify" do
     get "/verify"
-    assert last_response.body.include?("True")
+    assert last_response.body.include?("true")
   end
   
 end
