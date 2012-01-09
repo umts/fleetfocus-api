@@ -13,7 +13,7 @@ describe "My App" do
   
   it "should get the right vehicle from the database" do
     @fueling.EQ_equip_no.should == "3201"
-    @fueling.qty_fuel.should ==  "8.7"
+    @fueling.qty_fuel.should == "8.7"
   end
 
   it "should respond to /" do

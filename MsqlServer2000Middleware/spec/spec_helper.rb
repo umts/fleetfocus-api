@@ -8,6 +8,7 @@ require 'spec/interop/test'
 require 'json'
 require 'date'
 require 'factory_girl'
+
 Dir[File.dirname(__FILE__)+"/factories/*.rb"].each {|file| require file }
 
 # set test environment
