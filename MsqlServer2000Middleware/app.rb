@@ -26,6 +26,7 @@ ActiveRecord::Base.establish_connection(
 
 class SqlServer2000Connection < ActiveRecord::Base
   set_table_name 'emsdba.FTK_MAIN'
+  self.primary_key = 'row_id'
   @@have_tried_to_reconnect = false;
 
   # Obtain all records for a vehicle by its id

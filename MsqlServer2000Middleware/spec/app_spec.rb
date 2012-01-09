@@ -6,6 +6,15 @@ describe "My App" do
   def app
     @app ||= Sinatra::Application
   end
+  
+  before :each do
+    @fueling = Factory.build(:SqlServer2000Connection)
+  end
+  
+  it "should get the right vehicle from the database" do
+    @fueling.EQ_equip_no.should == "3201"
+    @fueling.qty_fuel.should ==  "8.7"
+  end
 
   it "should respond to /" do
     get '/*'
