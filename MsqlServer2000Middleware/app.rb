@@ -26,20 +26,7 @@ ActiveRecord::Base.establish_connection(
 
 class SqlServer2000Connection < ActiveRecord::Base
   set_table_name 'emsdba.FTK_MAIN'
-  
-  # Obtain all records for a vehicle by its name
-  def self.find_all_for_vehicle_name(vehicle_name, options = {})
-    #begin
-      fuelings = with_scope :find => options do
-        find(:all, 
-        :conditions => ["EQ_equip_no = ?", vehicle_name]
-        )
-      end
-      return fuelings
-    #rescue
-    #end
-  end
-  
+
   # Obtain all records for a vehicle by its id
   def self.find_all_for_vehicle_id(vehicle_id, options = {})
     #begin
@@ -201,8 +188,8 @@ get '/*' do
   403
 end
 
-error 403 do
-  'ACCESS FORBIDDEN!!! HOW DARE YOU TRY TO ENTER!!! YOU SHALL NEVER GAIN ENTRY AGAIN YOU FILTHY ANIMAL!!!'
+error 404 do
+  'Webpage Not Found '
 end
 
 __END__
