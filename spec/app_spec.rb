@@ -9,11 +9,13 @@ describe "My App" do
   
   before :each do
     @fueling = Factory.build(:SqlServer2000Connection)
+    @thing = mock('SqlServer2000Connection')
   end
   
   it "should get the right vehicle from the database" do
+    @thing.stub!(:EQ_equip_no, '3201')
+    @thing.should == @fueling.EQ_equip_no
     @fueling.EQ_equip_no.should == "3201"
-    @fueling.qty_fuel.should ==  "8.7"
   end
 
   it "should respond to /" do
