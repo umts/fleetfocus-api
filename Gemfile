@@ -1,10 +1,10 @@
 source :gemcutter
 
-gem 'rails', "2.3.14"
 gem 'haml'
 gem 'sinatra'
 gem 'thin'
 gem 'activerecord', "<3"
+gem 'actionpack', "~>2.3"
 gem 'activerecord-sqlserver-adapter'
 gem 'tiny_tds'
 
