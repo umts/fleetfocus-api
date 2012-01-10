@@ -1,15 +1,11 @@
 source :gemcutter
 
-#gem "rails", "2.3.14"
+gem 'rails', "2.3.14"
 gem 'haml'
-#gem 'compass'
-#gem 'capistrano'
-#gem 'pg'
 gem 'sinatra'
 gem 'thin'
-gem 'activerecord-sqlserver-adapter', ">=2.3.0" #https://github.com/rails-sqlserver/activerecord-sqlserver-adapter/tree/2-3-stable_deadlock
-#gem "webrat", ">=0.5.3"
-#gem 'authlogic'
+gem 'activerecord', "<3"
+gem 'activerecord-sqlserver-adapter'
 gem 'tiny_tds'
 
 group :development, :test do
@@ -17,8 +13,4 @@ group :development, :test do
   gem 'rack-test'
   gem 'test-unit', "=1.2.3"
   gem 'factory_girl'
-  #gem 'rr'
-  #gem 'cucumber-rails'
-  #gem 'factory_girl_rails' 
-  #gem 'ruby-debug19', :require => 'ruby-debug'
 end
