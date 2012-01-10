@@ -98,7 +98,6 @@ end
 # Obtain all records for a vehicle by its id which occur between the provided datetimes
 get '/vehicle/:id/:start_datetime/:end_datetime' do
   @vehicle_by_id_daterange = SqlServer2000Connection.find(:all, :conditions => ["EQ_equip_no = ? AND ftk_date > ? AND ftk_date < ?", params[:id], Time.at(params[:start_datetime].to_f), Time.at(params[:end_datetime].to_f)], :order => "ftk_date desc")
-  
   content_type :json
   @vehicle_by_id_daterange.to_json
   #haml :vehicle_id_daterange
@@ -107,7 +106,6 @@ end
 # Obtain records for all vehicles which occur after the provided datetime
 get '/all/:datetime' do
   @all_vehicles_by_datetime = SqlServer2000Connection.find(:all, :conditions => ["ftk_date > ?", Time.at(params[:datetime].to_f)], :order => "ftk_date desc")
-  
   content_type :json
   @all_vehicles_by_datetime.to_json
   #haml :all_vehicles_datetime
@@ -116,7 +114,6 @@ end
 # Obtain records for all vehicles which occur between two dates
 get '/all/:start_datetime/:end_datetime' do
   @all_vehicles_by_daterange = SqlServer2000Connection.find(:all, :conditions => ["ftk_date > ? AND ftk_date < ?", Time.at(params[:start_datetime].to_f), Time.at(params[:end_datetime].to_f)], :order => "ftk_date desc")
-  #@all_vehicles_by_daterange = "Seeking records for all vehicles which come after #{params[:start_datetime]} and before #{params[:end_datetime]}"
   content_type :json
   @all_vehicles_by_daterange.to_json
   #haml :all_vehicles_daterange
@@ -179,4 +176,3 @@ __END__
   %head
     %body
       =@connected
-     

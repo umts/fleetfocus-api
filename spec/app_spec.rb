@@ -9,14 +9,8 @@ describe "My App" do
   
   before :each do
     @fueling = Factory.build(:SqlServer2000Connection)
-    @thing = mock('SqlServer2000Connection')
   end
   
-  it "should get the right vehicle from the database" do
-    @thing.stub!(:EQ_equip_no, '3201')
-    @thing.should == @fueling.EQ_equip_no
-    @fueling.EQ_equip_no.should == "3201"
-  end
 
   it "should respond to /" do
     get '/*'
@@ -54,9 +48,5 @@ describe "My App" do
     assert last_response.body.include?("2011/12/12")
   end
   
-  it "/verify" do
-    get "/verify"
-    assert last_response.body.include?("true")
-  end
   
 end
