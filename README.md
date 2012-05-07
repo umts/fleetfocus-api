@@ -80,6 +80,11 @@ $ rackup
 [2012-05-07 18:56:14] INFO  WEBrick::HTTPServer#start: pid=74781 port=9292
 ```
 
+License
+=======
+This code is released under the MIT license.  See the file `LICENSE` for more
+info.
+
 [1]: http://www.assetworks.com/products/fleetfocus-fleet-management-software
 [2]: http://gembundler.com/
 [3]: http://www.sinatrarb.com/
