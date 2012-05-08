@@ -31,18 +31,18 @@ API
 Every JSON response has the following format:
 
 ```json
-{ connection_valid: boolean,
-  error:            "If connection_valid is false, why?",
-  fueling:          [
-                      {
-                      EQ_equip_no:       "vehicle_name",
-                      amount:            10.0,
-                      fuel_focus_row_id: 12345
-                      mileage:           100234,
-                      time_at:           "2000/01/01 00:00:00 -0400",
-                      time_at_insertion: "2000/01/01 00:00:40 -0400"
-                      }, ...
-                    ]
+{ "connection_valid": true,
+  "error":            "If connection_valid is false, why?",
+  "fueling":          [
+                        {
+                        "EQ_equip_no":       "vehicle_name",
+                        "amount":            10.0,
+                        "fuel_focus_row_id": 12345,
+                        "mileage":           100234,
+                        "time_at":           "2000/01/01 00:00:00 -0400",
+                        "time_at_insertion": "2000/01/01 00:00:40 -0400"
+                        }, "etc"
+                      ]
 }
 ```
 
