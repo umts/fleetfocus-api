@@ -2,7 +2,6 @@ source :gemcutter
 
 gem 'haml'
 gem 'sinatra', :require => "sinatra/base"
-gem 'thin'
 gem 'activerecord', "<3"
 gem 'actionpack', "~>2.3"
 gem 'activerecord-sqlserver-adapter'
