@@ -1,14 +1,3 @@
-require 'rubygems'
-require 'sinatra'
-require 'active_record'
-require 'activerecord-sqlserver-adapter'
-require 'tiny_tds'
-require 'haml'
-require 'yaml'
-require 'uri'
-require 'json'
-require 'date'
-
 ############################################################
 # This section establishes the Msql Server 2000 connection #
 ############################################################
@@ -70,77 +59,75 @@ end
 # This section is the collection of routing api's. The first matching route in this list will be called first. #
 ################################################################################################################
 
-before do
-
-end
-
+class FuelFocusApp < Sinatra::Base
 # Obtain all records for a vehicle by its id
-get '/vehicle/:name' do
-  @vehicle_by_id =
-    SqlServer2000Connection.find(:all,
-                                 :conditions => ["EQ_equip_no = ?", params[:name]],
-                                 :order => "ftk_date desc")
+  get '/vehicle/:name' do
+    @vehicle_by_id =
+      SqlServer2000Connection.find(:all,
+                                   :conditions => ["EQ_equip_no = ?", params[:name]],
+                                   :order => "ftk_date desc")
 
-  content_type :json
-  @vehicle_by_id.to_json
-  #haml :vehicle_id
-end
+    content_type :json
+    @vehicle_by_id.to_json
+    #haml :vehicle_id
+  end
 
-# Obtain all records for a vehicle by its id which occur after the provided datetime
-get '/vehicle/:name/:datetime' do
-  @vehicle_by_id_datetime =
-    SqlServer2000Connection.find(:all,
-                                 :conditions => ["EQ_equip_no = ? AND ftk_date > ?", params[:name], Time.at(params[:datetime].to_f)],
-                                 :order => "ftk_date desc")
+  # Obtain all records for a vehicle by its id which occur after the provided datetime
+  get '/vehicle/:name/:datetime' do
+    @vehicle_by_id_datetime =
+      SqlServer2000Connection.find(:all,
+                                   :conditions => ["EQ_equip_no = ? AND ftk_date > ?", params[:name], Time.at(params[:datetime].to_f)],
+                                   :order => "ftk_date desc")
 
-  content_type :json
-  @vehicle_by_id_datetime.to_json
-  #haml :vehicle_id_datetime
-end
+    content_type :json
+    @vehicle_by_id_datetime.to_json
+    #haml :vehicle_id_datetime
+  end
 
-# Obtain all records for a vehicle by its id which occur between the provided datetimes
-get '/vehicle/:name/:start_datetime/:end_datetime' do
-  @vehicle_by_id_daterange =
-    SqlServer2000Connection.find(:all,
-                                 :conditions => ["EQ_equip_no = ? AND ftk_date > ? AND ftk_date < ?", params[:name], Time.at(params[:start_datetime].to_f), Time.at(params[:end_datetime].to_f)],
-                                 :order => "ftk_date desc")
+  # Obtain all records for a vehicle by its id which occur between the provided datetimes
+  get '/vehicle/:name/:start_datetime/:end_datetime' do
+    @vehicle_by_id_daterange =
+      SqlServer2000Connection.find(:all,
+                                   :conditions => ["EQ_equip_no = ? AND ftk_date > ? AND ftk_date < ?", params[:name], Time.at(params[:start_datetime].to_f), Time.at(params[:end_datetime].to_f)],
+                                   :order => "ftk_date desc")
 
-  content_type :json
-  @vehicle_by_id_daterange.to_json
-  #haml :vehicle_id_daterange
-end
+    content_type :json
+    @vehicle_by_id_daterange.to_json
+    #haml :vehicle_id_daterange
+  end
 
-# Obtain records for all vehicles which occur after the provided datetime
-get '/all/:datetime' do
-  @all_vehicles_by_datetime =
-    SqlServer2000Connection.find(:all,
-                                 :conditions => ["ftk_date > ?", Time.at(params[:datetime].to_f)],
-                                 :order => "ftk_date desc")
+  # Obtain records for all vehicles which occur after the provided datetime
+  get '/all/:datetime' do
+    @all_vehicles_by_datetime =
+      SqlServer2000Connection.find(:all,
+                                   :conditions => ["ftk_date > ?", Time.at(params[:datetime].to_f)],
+                                   :order => "ftk_date desc")
 
-  content_type :json
-  @all_vehicles_by_datetime.to_json
-  #haml :all_vehicles_datetime
-end
+    content_type :json
+    @all_vehicles_by_datetime.to_json
+    #haml :all_vehicles_datetime
+  end
 
-# Obtain records for all vehicles which occur between two dates
-get '/all/:start_datetime/:end_datetime' do
-  @all_vehicles_by_daterange =
-    SqlServer2000Connection.find(:all,
-                                 :conditions => ["ftk_date > ? AND ftk_date < ?", Time.at(params[:start_datetime].to_f), Time.at(params[:end_datetime].to_f)],
-                                 :order => "ftk_date desc")
+  # Obtain records for all vehicles which occur between two dates
+  get '/all/:start_datetime/:end_datetime' do
+    @all_vehicles_by_daterange =
+      SqlServer2000Connection.find(:all,
+                                   :conditions => ["ftk_date > ? AND ftk_date < ?", Time.at(params[:start_datetime].to_f), Time.at(params[:end_datetime].to_f)],
+                                   :order => "ftk_date desc")
 
-  content_type :json
-  @all_vehicles_by_daterange.to_json
-  #haml :all_vehicles_daterange
-end
+    content_type :json
+    @all_vehicles_by_daterange.to_json
+    #haml :all_vehicles_daterange
+  end
 
-# The root URL
-get '/*' do
-  404
-end
+  # The root URL
+  get '/*' do
+    404
+  end
 
-error 404 do
-  'Eror 404. Webpage Not Found.'
+  error 404 do
+    'Eror 404. Webpage Not Found.'
+  end
 end
 
 __END__

@@ -1,7 +1,7 @@
 source :gemcutter
 
 gem 'haml'
-gem 'sinatra'
+gem 'sinatra', :require => "sinatra/base"
 gem 'thin'
 gem 'activerecord', "<3"
 gem 'actionpack', "~>2.3"
