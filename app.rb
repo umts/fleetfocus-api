@@ -3,7 +3,10 @@
 ############################################################
 
 # Is this the right scope?
-@@database_config = YAML.load_file( File.join( File.dirname( __FILE__ ), "config", "database.yml" ) )
+environment = ENV['RAILS_ENV'] || "development"
+config = Hashie::Hash.new
+config.replace(YAML.load_file(File.join(File.dirname( __FILE__ ), "config", "database.yml"))[environment])
+@@database_config = config.to_hash(:symbolize_keys => true)
 ActiveRecord::Base.establish_connection( @@database_config )
 
 ##########################################################################################

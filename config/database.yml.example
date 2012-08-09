@@ -1,5 +1,6 @@
-:adapter:  sqlserver
-:host:     db.example.com
-:database: dbname
-:username: username
-:password: password
+development:
+  adapter:  sqlserver
+  host:     db.example.com
+  database: dbname
+  username: username
+  password: password
