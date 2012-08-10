@@ -1,5 +1,5 @@
 begin
-  Sinatra::Base
+  #Sinatra::Base
 rescue NameError
   warn "Run this application within a Rack-compatable server.  For development, run 'rackup'"
   exit 1
@@ -9,7 +9,7 @@ end
 ############################################################
 
 # Is this the right scope?
-environment = ENV['RAILS_ENV'] || "development"
+environment = ENV['RACK_ENV'] || "development"
 config = Hashie::Hash.new
 config.replace(YAML.load_file(File.join(File.dirname( __FILE__ ), "config", "database.yml"))[environment])
 @@database_config = config.to_hash(:symbolize_keys => true)
