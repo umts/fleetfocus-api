@@ -1,3 +1,9 @@
+begin
+  Sinatra::Base
+rescue NameError
+  warn "Run this application within a Rack-compatable server.  For development, run 'rackup'"
+  exit 1
+end
 ############################################################
 # This section establishes the Msql Server 2000 connection #
 ############################################################
