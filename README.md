@@ -17,11 +17,19 @@ database information.  The MS-SQL username specified here **only** needs
 read-only access to the `FTK_MAIN` table.
 
 ```yaml
-:adapter:  sqlserver
-:host:     db.example.com
-:database: dbname
-:username: username
-:password: password
+development:
+  adapter:  sqlserver
+  host:     dev.example.com
+  database: dbname
+  username: username
+  password: password
+  
+production:
+  adapter:  sqlserver
+  host:     prod.example.com
+  database: dbname
+  username: username
+  password: password
 ```
 
 Install the gem requirements with [Bundler][2].
