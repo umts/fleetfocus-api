@@ -135,7 +135,7 @@ class FuelFocusApp < Sinatra::Base
   end
 
   error 404 do
-    'Eror 404. Webpage Not Found.'
+    'Error 404. Webpage Not Found.'
   end
 end
 
