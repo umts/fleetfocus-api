@@ -1,5 +1,4 @@
 require 'yaml'
-require 'net/ssh/gateway'
 require 'json'
 require 'bundler'
 

@@ -2,13 +2,6 @@ environment = ENV['RACK_ENV'] || "development"
 config = Hashie::Hash.new
 config.replace(YAML.load_file(File.join(File.dirname( __FILE__ ), "config", "database.yml"))[environment])
 database_config = config.to_hash(symbolize_keys: true)
-
-if environment == 'development'
-  gateway = Net::SSH::Gateway.new(database_config.delete(:gateway),
-                                  database_config.delete(:gateway_user))
-  port = gateway.open('127.0.0.1', database_config[:port])
-  database_config.merge!(port: port)
-end
 ActiveRecord::Base.establish_connection( database_config )
 
 class Fueling < ActiveRecord::Base
