@@ -1,6 +1,6 @@
 Introduction
 ============
-This application connects to the Microsoft SQL back-end of a [Fleet Focus][1]
+This application connects to the Microsoft SQL back-end of a [Trapeze EAM][1]
 installation and provides API endpints (in JSON format) for fueling
 information.
 
@@ -93,7 +93,7 @@ License
 This code is released under the MIT license.  See the file `LICENSE` for more
 info.
 
-[1]: http://www.assetworks.com/products/fleetfocus-fleet-management-software
-[2]: http://gembundler.com/
+[1]: http://www.trapezegroup.com/enterprise-asset-management
+[2]: http://bundler.io/
 [3]: http://www.sinatrarb.com/
-[4]: http://rack.rubyforge.org/
+[4]: http://rack.github.io/
