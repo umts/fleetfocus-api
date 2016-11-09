@@ -1,13 +1,11 @@
-source :gemcutter
+source 'https://rubygems.org'
 
-gem 'haml'
 gem 'sinatra',             :require => "sinatra/base"
 gem 'thin',                :require => false
-gem 'activerecord', "<3",  :require => "active_record"
-gem 'actionpack', "~>2.3", :require => "action_pack"
-gem 'activerecord-sqlserver-adapter'
-gem 'tiny_tds'
+gem 'activerecord-sqlserver-adapter', '~> 4.2.0'
+gem 'tiny_tds', '= 0.7.0'
 gem 'hashie'
+gem 'net-ssh-gateway'
 
 group :development, :test do
   gem 'rspec', "=1.3.2",   :require => "spec"

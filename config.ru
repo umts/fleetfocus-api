@@ -1,11 +1,9 @@
-require 'rubygems'
 require 'yaml'
-require 'uri'
+require 'net/ssh/gateway'
 require 'json'
-require 'date'
 require 'bundler'
 
 Bundler.require
 
-require './app'
-run FuelFocusApp
+require './eam'
+run EAMApp
