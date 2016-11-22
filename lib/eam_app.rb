@@ -1,11 +1,12 @@
 class EAMApp < Sinatra::Base
 
-  access_log = File.new("#{settings.root}/log/#{settings.environment}_access.log", 'a+')
-  error_log = File.new("#{settings.root}/log/#{settings.environment}_error.log", 'a+')
-  access_log.sync = true
-  error_log.sync = true
-
   configure do
+    set :root, File.join(File.dirname(settings.app_file), '..')
+    access_log = File.new("#{settings.root}/log/#{settings.environment}_access.log", 'a+')
+    error_log = File.new("#{settings.root}/log/#{settings.environment}_error.log", 'a+')
+    access_log.sync = true
+    error_log.sync = true
+
     enable :logging
     use Rack::CommonLogger, access_log
   end
