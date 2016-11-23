@@ -1,14 +1,16 @@
-require 'rubygems'
 require 'bundler'
 Bundler.require(:default, :test)
-require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
-Dir[File.dirname(__FILE__)+"/factories/*.rb"].each {|file| require file }
+ENV['RACK_ENV'] = 'test'
 
-# set test environment
-class FuelFocusApp
-  set :environment, :test
-  set :run, false
-  set :raise_errors, true
-  set :logging, false
+require File.expand_path '../../eam.rb', __FILE__
+
+FactoryGirl.definition_file_paths = %w{./factories ./test/factories ./spec/factories}
+FactoryGirl.find_definitions
+
+module RSpecMixin
+  include Rack::Test::Methods
+  def app() described_class end
 end
+
+RSpec.configure { |c| c.include RSpecMixin }
