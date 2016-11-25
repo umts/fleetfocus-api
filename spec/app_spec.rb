@@ -1,11 +1,4 @@
-require File.dirname(__FILE__) + '/spec_helper.rb'
-
-describe "My App" do
-  include Rack::Test::Methods
-
-  def app
-    @app ||= FuelFocusApp
-  end
+describe EAMApp do
 
   before :each do
     @fueling = Factory.build(:SqlServer2000Connection)
