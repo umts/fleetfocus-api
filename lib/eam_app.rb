@@ -1,31 +1,12 @@
-environment = ENV['RACK_ENV'] || "development"
-config = Hashie::Hash.new
-config.replace(YAML.load_file(File.join(File.dirname( __FILE__ ), "config", "database.yml"))[environment])
-database_config = config.to_hash(symbolize_keys: true)
-ActiveRecord::Base.establish_connection( database_config )
-
-class Fueling < ActiveRecord::Base
-  self.table_name = 'emsdba.FTK_MAIN'
-  self.primary_key = 'row_id'
-
-  default_scope do
-    order('ftk_date DESC').select 'qty_fuel AS amount',
-                                  'meter_1 AS mileage',
-                                  'ftk_date AS time_at',
-                                  'row_id AS fuel_focus_row_id',
-                                  'X_datetime_insert AS time_at_insertion',
-                                  'EQ_equip_no'
-  end
-end
-
 class EAMApp < Sinatra::Base
 
-  access_log = File.new("#{settings.root}/log/#{settings.environment}_access.log", 'a+')
-  error_log = File.new("#{settings.root}/log/#{settings.environment}_error.log", 'a+')
-  access_log.sync = true
-  error_log.sync = true
-
   configure do
+    set :root, File.join(File.dirname(settings.app_file), '..')
+    access_log = File.new("#{settings.root}/log/#{settings.environment}_access.log", 'a+')
+    error_log = File.new("#{settings.root}/log/#{settings.environment}_error.log", 'a+')
+    access_log.sync = true
+    error_log.sync = true
+
     enable :logging
     use Rack::CommonLogger, access_log
   end
