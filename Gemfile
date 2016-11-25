@@ -16,4 +16,5 @@ group :development do
   gem 'capistrano-pending', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-passenger', require: false
+  gem 'pry'
 end
