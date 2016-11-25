@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'sinatra',             :require => "sinatra/base"
 gem 'activerecord-sqlserver-adapter', '~> 4.2.0'
 gem 'tiny_tds'
-gem 'hashie'
 
 group :test do
   gem 'rspec', "=1.3.2",   :require => "spec"
