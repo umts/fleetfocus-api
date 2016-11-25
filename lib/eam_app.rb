@@ -58,7 +58,7 @@ class EAMApp < Sinatra::Base
   helpers do
     def build_response(fuelings)
       if fuelings.present?
-        return { connection_valid: true, error: '', fueling: fuelings }
+        return { connection_valid: true, error: '', fueling: fuelings.as_json(except: 'row_id') }
       else
         return { connection_valid: false,
                  error: 'Your query has returned no results. Please contact IT for further assistance.'
