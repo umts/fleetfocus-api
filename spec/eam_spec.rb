@@ -1,5 +1,10 @@
+require 'fueling'
+require 'eam_app'
+
 describe EAMApp do
   it 'returns a 404 for the root URL'
+  it 'contains its response in a wrapper JSON object'
+  it 'wraps errors in the response JSON'
 
   context 'with a vehicle id' do
     it 'returns all fuelings for that vehicle'

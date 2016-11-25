@@ -3,7 +3,7 @@ Bundler.require(:default, :test)
 
 ENV['RACK_ENV'] = 'test'
 
-require File.expand_path '../../eam.rb', __FILE__
+$LOAD_PATH.unshift File.expand_path '../../lib', __FILE__
 
 module RSpecMixin
   include Rack::Test::Methods
