@@ -1,8 +1,12 @@
 require 'fueling'
 require 'eam_app'
+require 'pry'
 
 describe EAMApp do
-  it 'returns a 404 for the root URL'
+  it 'returns a 404 for the root URL' do
+    get '/'
+    binding.pry
+  end
   it 'contains its response in a wrapper JSON object'
   it 'wraps errors in the response JSON'
 
