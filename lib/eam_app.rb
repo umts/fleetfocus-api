@@ -2,17 +2,19 @@ class EAMApp < Sinatra::Base
 
   configure do
     set :root, File.join(File.dirname(settings.app_file), '..')
-    @access_log = File.new("#{settings.root}/log/#{settings.environment}_access.log", 'a+')
-    @error_log = File.new("#{settings.root}/log/#{settings.environment}_error.log", 'a+')
-    @access_log.sync = true
-    @error_log.sync = true
+    access_log = File.new("#{settings.root}/log/#{settings.environment}_access.log", 'a+')
+    error_log = File.new("#{settings.root}/log/#{settings.environment}_error.log", 'a+')
+    access_log.sync = true
+    error_log.sync = true
+    set :access_log, access_log
+    set :error_log, error_log
 
     enable :logging
-    use Rack::CommonLogger, @access_log
+    use Rack::CommonLogger, settings.access_log
   end
 
   before do
-    env["rack.errors"] = @error_log
+    env["rack.errors"] = settings.error_log
     content_type :json
   end
 
