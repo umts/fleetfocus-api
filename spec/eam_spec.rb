@@ -5,8 +5,9 @@ require 'pry'
 describe EAMApp do
   it 'returns a 404 for the root URL' do
     get '/'
-    binding.pry
+    expect(last_response.status).to be(404)
   end
+
   it 'contains its response in a wrapper JSON object'
   it 'wraps errors in the response JSON'
 
