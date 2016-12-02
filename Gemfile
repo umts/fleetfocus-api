@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'sinatra',             require: "sinatra/base"
+gem 'sinatra',              require: "sinatra/base"
 gem 'activerecord-sqlserver-adapter', '~> 4.2.0'
+gem 'sinatra-activerecord', require: 'sinatra/activerecord'
 gem 'tiny_tds'
 
 group :test do

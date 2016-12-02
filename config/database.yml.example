@@ -1,6 +1,10 @@
+# Because our application never writes to the database, you *can* tunnel
+# through the production server to the prod database if you have to
+# ssh -v -N -L 14333:sqlserver:1433 user@prodwebserver
 development:
   adapter:  sqlserver
-  host:     db.example.com
+  host:     127.0.0.1
   database: dbname
   username: username
   password: password
+  port:     14333
