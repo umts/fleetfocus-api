@@ -1,4 +1,5 @@
 class EAMApp < Sinatra::Base
+  register Sinatra::ActiveRecordExtension
 
   configure do
     set :root, File.join(File.dirname(settings.app_file), '..')
