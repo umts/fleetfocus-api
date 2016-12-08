@@ -3,7 +3,7 @@ require 'capistrano/setup'
 
 # Include default deployment tasks
 require 'capistrano/deploy'
-
+require 'capistrano/pending'
 require 'capistrano/bundler'
 require 'capistrano/passenger'
 
