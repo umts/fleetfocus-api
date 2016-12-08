@@ -1,12 +1,16 @@
 source 'https://rubygems.org'
 
 gem 'sinatra',              require: "sinatra/base"
-gem 'activerecord-sqlserver-adapter', '~> 4.2.0'
 gem 'sinatra-activerecord', require: 'sinatra/activerecord'
-gem 'tiny_tds'
+
+group :production, :development do
+  gem 'activerecord-sqlserver-adapter', '~> 4.2.0'
+  gem 'tiny_tds'
+end
 
 group :test do
   gem 'rspec'
+  gem 'sqlite3'
   gem 'rack-test',         require: "rack/test"
   gem 'factory_girl'
 end
