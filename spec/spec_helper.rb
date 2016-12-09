@@ -1,7 +1,7 @@
+ENV['RACK_ENV'] = 'test'
+
 require 'bundler'
 Bundler.require(:default, :test)
-
-ENV['RACK_ENV'] = 'test'
 
 $LOAD_PATH.unshift File.expand_path '../../lib', __FILE__
 
@@ -16,5 +16,16 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.before(:suite) do
     FactoryGirl.find_definitions
+  end
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with :truncation
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
   end
 end

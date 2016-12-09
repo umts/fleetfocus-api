@@ -13,6 +13,7 @@ group :test do
   gem 'sqlite3'
   gem 'rack-test',         require: "rack/test"
   gem 'factory_girl'
+  gem 'database_cleaner'
 end
 
 group :development do
