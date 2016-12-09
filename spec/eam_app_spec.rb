@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'fueling'
 require 'eam_app'
 require 'json'
@@ -12,7 +13,7 @@ RSpec.describe EAMApp do
   end
 
   let :buses do
-    fueling.map{ |f| f.fetch 'EQ_equip_no' }
+    fueling.map { |f| f.fetch 'EQ_equip_no' }
   end
 
   it 'returns a 404 for the root URL' do
@@ -22,16 +23,16 @@ RSpec.describe EAMApp do
 
   it 'contains its response in a wrapper JSON object' do
     create :fueling
-    get "/all/0"
-    expect{ parsed }.not_to raise_error
-    expect(parsed.fetch 'connection_valid').to be(true)
-    expect(parsed.fetch 'error').to be_blank
+    get '/all/0'
+    expect { parsed }.not_to raise_error
+    expect(parsed.fetch('connection_valid')).to be(true)
+    expect(parsed.fetch('error')).to be_blank
   end
 
   it 'wraps errors in the response JSON' do
     get '/vehicle/NONEXISTANT'
-    expect(parsed.fetch 'connection_valid').to be(false)
-    expect(parsed.fetch 'error').to be_present
+    expect(parsed.fetch('connection_valid')).to be(false)
+    expect(parsed.fetch('error')).to be_present
   end
 
   context 'with a vehicle id' do
@@ -53,7 +54,8 @@ RSpec.describe EAMApp do
         get "/vehicle/3201/#{25.days.ago.to_i}"
         expect(fueling.count).to be(2)
         expect(buses).not_to include('3315')
-        expect(fueling.map{ |f| Date.parse(f.fetch 'time_at') }).to all(be > 25.days.ago)
+        dates = fueling.map { |f| Date.parse(f.fetch('time_at')) }
+        expect(dates).to all(be > 25.days.ago)
       end
     end
 
@@ -63,8 +65,8 @@ RSpec.describe EAMApp do
         d2 = 15.days.ago.to_i
         get "/vehicle/3201/#{d1}/#{d2}"
         expect(fueling.count).to be(1)
-        expect(fueling.first.fetch 'time_at').to be > 20.days.ago - 5.minutes
-        expect(fueling.first.fetch 'time_at').to be < 20.days.ago + 5.minutes
+        expect(fueling.first.fetch('time_at')).to be > 20.days.ago - 5.minutes
+        expect(fueling.first.fetch('time_at')).to be < 20.days.ago + 5.minutes
       end
     end
   end

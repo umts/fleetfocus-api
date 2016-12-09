@@ -1,10 +1,13 @@
+# frozen_string_literal: true
 class EAMApp < Sinatra::Base
   register Sinatra::ActiveRecordExtension
 
   configure do
     set :root, File.join(File.dirname(settings.app_file), '..')
-    access_log = File.new("#{settings.root}/log/#{settings.environment}_access.log", 'a+')
-    error_log = File.new("#{settings.root}/log/#{settings.environment}_error.log", 'a+')
+    access_log_file = "#{settings.root}/log/#{settings.environment}_access.log"
+    error_log_file = "#{settings.root}/log/#{settings.environment}_error.log"
+    access_log = File.new(access_log_file, 'a+')
+    error_log = File.new(error_log_file, 'a+')
     access_log.sync = true
     error_log.sync = true
     set :access_log, access_log
@@ -15,7 +18,7 @@ class EAMApp < Sinatra::Base
   end
 
   before do
-    env["rack.errors"] = settings.error_log
+    env['rack.errors'] = settings.error_log
     content_type :json
   end
 
@@ -29,14 +32,16 @@ class EAMApp < Sinatra::Base
 
   get '/vehicle/:name/:datetime' do
     start_date = Time.at(params[:datetime].to_i)
-    @fuelings = Fueling.where('EQ_equip_no = ? AND ftk_date > ?', params[:name], start_date)
+    @fuelings = Fueling.where('EQ_equip_no = ? AND ftk_date > ?',
+                              params[:name], start_date)
   end
 
   get '/vehicle/:name/:start_datetime/:end_datetime' do
     start_date = Time.at(params[:start_datetime].to_i)
     end_date = Time.at(params[:end_datetime].to_i)
-    @fuelings = Fueling.where('EQ_equip_no = ? AND ftk_date > ? AND ftk_date < ?',
-                              params[:name], start_date, end_date)
+    @fuelings =
+      Fueling.where('EQ_equip_no = ? AND ftk_date > ? AND ftk_date < ?',
+                    params[:name], start_date, end_date)
   end
 
   get '/all/:datetime' do
@@ -47,7 +52,8 @@ class EAMApp < Sinatra::Base
   get '/all/:start_datetime/:end_datetime' do
     start_date = Time.at(params[:start_datetime].to_i)
     end_date = Time.at(params[:end_datetime].to_i)
-    @fuelings = Fueling.where('ftk_date > ? AND ftk_date < ?', start_date, end_date)
+    @fuelings = Fueling.where('ftk_date > ? AND ftk_date < ?',
+                              start_date, end_date)
   end
 
   get '/*' do
@@ -61,11 +67,13 @@ class EAMApp < Sinatra::Base
   helpers do
     def build_response(fuelings)
       if fuelings.present?
-        return { connection_valid: true, error: '', fueling: fuelings.as_json(except: 'row_id') }
+        { connection_valid: true,
+          error: '',
+          fueling: fuelings.as_json(except: 'row_id') }
       else
-        return { connection_valid: false,
-                 error: 'Your query has returned no results. Please contact IT for further assistance.'
-               }
+        { connection_valid: false,
+          error: 'Your query has returned no results.
+          Please contact IT for further assistance.'.gsub(/  +/, ' ') }
       end
     end
   end

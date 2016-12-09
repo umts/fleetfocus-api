@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 ENV['RACK_ENV'] = 'test'
 
 require 'bundler'
@@ -7,16 +8,16 @@ $LOAD_PATH.unshift File.expand_path '../../lib', __FILE__
 
 module RSpecMixin
   include Rack::Test::Methods
-  def app() described_class end
+  def app
+    described_class
+  end
 end
 
 RSpec.configure do |config|
   config.disable_monkey_patching!
   config.warnings = true
   config.order = :random
-  if config.files_to_run.one?
-    config.default_formatter = 'doc'
-  end
+  config.default_formatter = 'doc' if config.files_to_run.one?
 
   config.include RSpecMixin
 

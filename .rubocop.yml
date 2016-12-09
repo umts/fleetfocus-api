@@ -1,0 +1,7 @@
+AllCops:
+  Exclude:
+    - 'config/**/*'
+    - 'db/**/*'
+
+Style/Documentation:
+  Enabled: false

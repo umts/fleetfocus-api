@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'yaml'
 require 'json'
 require 'bundler'
@@ -9,7 +10,7 @@ Bundler.require(:default, env)
 
 config_file = File.join(this_dir, '..', 'config', 'database.yml')
 db_config = YAML.load_file(config_file)[env]
-ActiveRecord::Base.establish_connection( db_config )
+ActiveRecord::Base.establish_connection(db_config)
 
 require 'fueling'
 require 'eam_app'
