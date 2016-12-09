@@ -20,7 +20,7 @@ class EAMApp < Sinatra::Base
   end
 
   after do
-    response.body = build_response(@fuelings).to_json
+    response.body = build_response(@fuelings).to_json if response.ok?
   end
 
   get '/vehicle/:name' do

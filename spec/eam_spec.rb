@@ -2,7 +2,7 @@ require 'fueling'
 require 'eam_app'
 require 'json'
 
-describe EAMApp do
+RSpec.describe EAMApp do
   let :parsed do
     JSON.parse last_response.body
   end
@@ -17,7 +17,7 @@ describe EAMApp do
 
   it 'returns a 404 for the root URL' do
     get '/'
-    expect(last_response.status).to be(404)
+    expect(last_response).to be_not_found
   end
 
   it 'contains its response in a wrapper JSON object' do
@@ -79,7 +79,7 @@ describe EAMApp do
 
     it 'is invalid without timestamps' do
       get '/all'
-      expect(last_response.status).to be(404)
+      expect(last_response).to be_not_found
     end
 
     context 'and a single timestamp' do
