@@ -37,8 +37,10 @@ RSpec.describe EAMApp do
 
   context 'with a vehicle id' do
     before :each do
-      create :fueling, ftk_date: 30.days.ago
-      create :fueling, ftk_date: 20.days.ago
+      @thirty_days_ago = 30.days.ago
+      @twenty_days_ago = 20.days.ago
+      create :fueling, ftk_date: @thirty_days_ago
+      create :fueling, ftk_date: @twenty_days_ago
       create :fueling
       create :fueling, EQ_equip_no: '3315'
     end
@@ -65,8 +67,10 @@ RSpec.describe EAMApp do
         d2 = 15.days.ago.to_i
         get "/vehicle/3201/#{d1}/#{d2}"
         expect(fueling.count).to be(1)
-        expect(fueling.first.fetch('time_at')).to be > 20.days.ago - 5.minutes
-        expect(fueling.first.fetch('time_at')).to be < 20.days.ago + 5.minutes
+
+        # 'Z' and to_i to work-around a problem with sqlite and 'AS'
+        time_of_fueling = Time.parse(fueling.first.fetch('time_at') + 'Z').to_i
+        expect(time_of_fueling).to eq(@twenty_days_ago.to_i)
       end
     end
   end

@@ -8,11 +8,13 @@ RSpec.describe Fueling do
   end
 
   it 'reverse-sorts by fuel date by default' do
-    f1 = create :fueling, ftk_date: 1.day.ago
-    f2 = create :fueling, ftk_date: 3.days.ago
-    f3 = create :fueling, ftk_date: 4.days.ago
-    f4 = create :fueling, ftk_date: 2.days.ago
-    expect(Fueling.pluck(:row_id)).to eq([f1, f4, f2, f3].map(&:id))
+    sorted_fuelings = [(create :fueling, ftk_date: 1.day.ago),
+                       (create :fueling, ftk_date: 3.days.ago),
+                       (create :fueling, ftk_date: 4.days.ago),
+                       (create :fueling, ftk_date: 2.days.ago)]
+                      .sort{ |a, b| b.ftk_date <=> a.ftk_date }
+
+    expect(Fueling.pluck(:row_id)).to eq(sorted_fuelings.map(&:id))
   end
 
   it 'uses the AS aliases specified' do
