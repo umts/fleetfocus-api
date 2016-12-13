@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Fueling < ActiveRecord::Base
   self.table_name = 'emsdba.FTK_MAIN'
   self.primary_key = 'row_id'
