@@ -1,7 +1,7 @@
 Introduction
 ============
 This application connects to the Microsoft SQL back-end of a [Trapeze EAM][1]
-installation and provides API endpints (in JSON format) for fueling
+installation and provides API endpoints (in JSON format) for fueling
 information.
 
 It's unlikely that this project fulfills a need for anyone other than us, but
@@ -9,8 +9,10 @@ you never know...
 
 Configuration
 =============
-This application only knows how to communicate with the MS-SQL-backed Fleet
-Focus.  If you have an Oracle-backed installation, we can't help you.
+This application only knows how to communicate with the MS-SQL-backed EAM.
+We don't have any experience with the Oracle-backed version, but it might be
+possible: the schema is the same, and there is an Oracle activerecord
+adaptor. PRs welcome.
 
 Create a `database.yml` file in the `config` directory and fill in your
 database information.  The MS-SQL username specified here **only** needs
@@ -47,8 +49,8 @@ Every JSON response has the following format:
                         "amount":            10.0,
                         "fuel_focus_row_id": 12345,
                         "mileage":           100234,
-                        "time_at":           "2000/01/01 00:00:00 -0400",
-                        "time_at_insertion": "2000/01/01 00:00:40 -0400"
+                        "time_at":           "2000-01-01T00:00:30.000Z",
+                        "time_at_insertion": "2000-01-01T00:00:40.000Z"
                         }, "etc"
                       ]
 }
@@ -63,29 +65,30 @@ API URLs
 > returns all fuelings for the specified vehicle
 
 `GET /vehicle/<vehicle name>/<timestamp>`
-> returns all fuelings for the specified vehicle since the given unix
+> returns all fuelings for the specified vehicle since the given Unix
 > timestamp
 
 `GET /vehicle/<vehicle name>/<start>/<end>`
-> returns all fuelings for the specified vehicle between the two unix
+> returns all fuelings for the specified vehicle between the two Unix
 > timestamps, "start" and "end"
 
 `GET /all/<timestamp>`
-> returns all fuelings since the given unix timestmp
+> returns all fuelings since the given Unix timestamp
 
 `GET /all/<start>/<end>`
-> returns all fuelings that happened between the two unix timestamps, "start"
+> returns all fuelings that happened between the two Unix timestamps, "start"
 > and "end"
 
 Running the app
 ===============
-It's a [sinatra][3] application, so it can run under [Rack][4]
+It's a [Sinatra][3] application, so it can run under any [Rack][4]-compatible
+web server.
 
 ```bash
 $ rackup
-[2012-05-07 18:56:14] INFO  WEBrick 1.3.1
-[2012-05-07 18:56:14] INFO  ruby 1.9.3 (2011-07-31) [x86_64-darwin11.2.0]
-[2012-05-07 18:56:14] INFO  WEBrick::HTTPServer#start: pid=74781 port=9292
+[2016-12-13 09:07:50] INFO  WEBrick 1.3.1
+[2016-12-13 09:07:50] INFO  ruby 2.3.2 (2016-11-15) [x86_64-linux]
+[2016-12-13 09:07:50] INFO  WEBrick::HTTPServer#start: pid=4288 port=9292
 ```
 
 License
