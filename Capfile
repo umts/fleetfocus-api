@@ -1,12 +1,10 @@
 # frozen_string_literal: true
-# Load DSL and set up stages
-require 'capistrano/setup'
 
-# Include default deployment tasks
-require 'capistrano/deploy'
-require 'capistrano/pending'
-require 'capistrano/bundler'
-require 'capistrano/passenger'
+%w[setup deploy scm/git pending bundler passenger].each do |lib|
+  require "capistrano/#{lib}"
+end
+
+install_plugin Capistrano::SCM::Git
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
