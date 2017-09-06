@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 # config valid only for current version of Capistrano
-lock '3.4.0'
+lock '3.8.1'
 
 set :application, 'fleetfocus-api'
 set :repo_url, 'git@github.com:umts/fleetfocus-api.git'
 set :deploy_to, "/srv/#{fetch :application}"
-set :scm, :git
 
 set :log_level, :info
 

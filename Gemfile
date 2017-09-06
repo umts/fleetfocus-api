@@ -19,7 +19,7 @@ group :test do
 end
 
 group :development do
-  gem 'capistrano', '=3.4.0', require: false
+  gem 'capistrano', '=3.8.1', require: false
   gem 'capistrano-bundler',   require: false
   gem 'capistrano-passenger', require: false
   gem 'capistrano-pending',   require: false
