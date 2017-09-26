@@ -3,7 +3,7 @@
 lock '3.8.1'
 
 set :application, 'fleetfocus-api'
-set :repo_url, 'git@github.com:umts/fleetfocus-api.git'
+set :repo_url, 'https://github.com/umts/fleetfocus-api.git'
 set :deploy_to, "/srv/#{fetch :application}"
 
 set :log_level, :info
