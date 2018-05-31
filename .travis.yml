@@ -1,0 +1,17 @@
+language: ruby
+env:
+  - RACK_ENV=test
+before_script:
+  - cp config/database.yml.example config/database.yml
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+script:
+  - bundle exec rspec
+branches:
+  only:
+  - master
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+    recipients: programmers@admin.umass.edu
