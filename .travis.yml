@@ -1,6 +1,10 @@
 language: ruby
 env:
   - RACK_ENV=test
+addons:
+  apt:
+    packages:
+      - freetds
 before_script:
   - cp config/database.yml.example config/database.yml
   - bundle exec rake db:create
