@@ -21,9 +21,9 @@ RSpec.configure do |config|
 
   config.include RSpecMixin
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.before(:suite) do
-    FactoryGirl.find_definitions
+    FactoryBot.find_definitions
   end
 
   config.before(:suite) do
