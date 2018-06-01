@@ -118,7 +118,7 @@ DEPENDENCIES
   sinatra
   sinatra-activerecord
   sqlite3
-  tiny_tds
+  tiny_tds (= 2.1.2)
 
 BUNDLED WITH
    1.16.2

@@ -6,7 +6,7 @@ gem 'sinatra-activerecord', require: 'sinatra/activerecord'
 
 group :production, :development do
   gem 'activerecord-sqlserver-adapter', '~> 4.2.0'
-  gem 'tiny_tds'
+  gem 'tiny_tds', '= 2.1.2'
 end
 
 group :test do

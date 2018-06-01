@@ -1,11 +1,9 @@
 language: ruby
 env:
   - RACK_ENV=test
-addons:
-  apt:
-    packages:
-      - freetds-dev
+sudo: required
 before_script:
+  - sudo ./spec/bin/install-freetds.sh
   - cp config/database.yml.example config/database.yml
   - bundle exec rake db:create
   - bundle exec rake db:migrate
