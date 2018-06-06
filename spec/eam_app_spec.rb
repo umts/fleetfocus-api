@@ -68,8 +68,9 @@ RSpec.describe EAMApp do
         get "/vehicle/3201/#{d1}/#{d2}"
         expect(fueling.count).to be(1)
 
-        # 'Z' and to_i to work-around a problem with sqlite and 'AS'
-        time_of_fueling = Time.parse(fueling.first.fetch('time_at') + 'Z').to_i
+        # 'Time.now.zone' and to_i to work-around a problem with sqlite and 'AS'
+        time_of_fueling = Time.parse(fueling.first.fetch('time_at') +
+                                     Time.now.zone).to_i
         expect(time_of_fueling).to eq(@twenty_days_ago.to_i)
       end
     end

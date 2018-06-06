@@ -36,8 +36,13 @@ RSpec.describe Fueling do
     # I think this is a limitation of sqlite?
     # The result of "SELECT some_time AS other" returns a `String` in test
     # only.  There are other differences too, but they # don't break `#==`
-    expect(DateTime.parse(with_scope.time_at)).to eq(without_scope.ftk_date)
-    expect(DateTime.parse(with_scope.time_at_insertion))
-      .to eq(without_scope.X_datetime_insert)
+    ta_parsed = DateTime.parse(
+      "#{with_scope.time_at} #{Time.now.zone}"
+    )
+    tai_parsed = DateTime.parse(
+      "#{with_scope.time_at_insertion} #{Time.now.zone}"
+    )
+    expect(ta_parsed).to eq(without_scope.ftk_date)
+    expect(tai_parsed).to eq(without_scope.X_datetime_insert)
   end
 end
