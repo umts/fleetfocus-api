@@ -21,6 +21,6 @@ class Fueling < ActiveRecord::Base
   end
 
   def readonly?
-    true
+    ENV['RACK_ENV'] == 'test' ? super : true
   end
 end
