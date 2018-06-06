@@ -15,8 +15,12 @@ class Fueling < ActiveRecord::Base
 
   def inspect
     attrs = { vehicle: self.EQ_equip_no,
-              amount: amount.to_f,
-              time_at: time_at }
+              amount: qty_fuel.to_f,
+              time_at: ftk_date }
     "#<#{self.class} #{attrs}>"
+  end
+
+  def readonly?
+    true
   end
 end
