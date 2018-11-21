@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'bundler'
 env = ENV['RACK_ENV'] || 'development'
 Bundler.require(:default, env)

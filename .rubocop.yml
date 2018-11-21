@@ -1,7 +1,18 @@
 AllCops:
+  Include:
+    - Capfile
+    - Gemfile
+    - Rakefile
+    - config.ru
+    - '**/*.rb'
   Exclude:
     - 'config/**/*'
-    - 'db/**/*'
+    - 'db/schema.rb'
 
 Style/Documentation:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - config/**/*
+    - spec/**/*

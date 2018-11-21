@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class EAMApp < Sinatra::Base
   register Sinatra::ActiveRecordExtension
 

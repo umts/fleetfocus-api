@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'fueling'
 
 RSpec.describe Fueling do
@@ -12,7 +13,7 @@ RSpec.describe Fueling do
                        (create :fueling, ftk_date: 3.days.ago),
                        (create :fueling, ftk_date: 4.days.ago),
                        (create :fueling, ftk_date: 2.days.ago)]
-                      .sort{ |a, b| b.ftk_date <=> a.ftk_date }
+                      .sort { |a, b| b.ftk_date <=> a.ftk_date }
 
     expect(Fueling.pluck(:row_id)).to eq(sorted_fuelings.map(&:id))
   end
@@ -36,10 +37,10 @@ RSpec.describe Fueling do
     # I think this is a limitation of sqlite?
     # The result of "SELECT some_time AS other" returns a `String` in test
     # only.  There are other differences too, but they # don't break `#==`
-    ta_parsed = DateTime.parse(
+    ta_parsed = Time.parse(
       "#{with_scope.time_at} #{Time.now.zone}"
     )
-    tai_parsed = DateTime.parse(
+    tai_parsed = Time.parse(
       "#{with_scope.time_at_insertion} #{Time.now.zone}"
     )
     expect(ta_parsed).to eq(without_scope.ftk_date)
