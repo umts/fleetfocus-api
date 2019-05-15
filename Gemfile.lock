@@ -122,5 +122,8 @@ DEPENDENCIES
   sqlite3
   tiny_tds (= 2.1.2)
 
+RUBY VERSION
+   ruby 2.6.1p33
+
 BUNDLED WITH
-   1.16.2
+   2.0.1
