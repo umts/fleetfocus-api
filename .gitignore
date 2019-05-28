@@ -1,6 +1,7 @@
 config/database.yml
+db/test.db
+
 log/*
-db/test.sqlite3
 
 coverage/**/*
 !coverage/.last_run.json
