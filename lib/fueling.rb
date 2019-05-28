@@ -16,13 +16,10 @@ class Fueling < ActiveRecord::Base
   end
 
   def inspect
-    attrs = { vehicle: self.EQ_equip_no,
-              amount: qty_fuel.to_f,
-              time_at: ftk_date }
-    "#<#{self.class} #{attrs}>"
+    "#<#{self.class} #{attributes.slice('EQ_equip_no', 'amount', 'time_at')}>"
   end
 
   def readonly?
-   ENV['RACK_ENV'] == 'test' ? super : true
+    ENV['RACK_ENV'] == 'test' ? super : true
   end
 end
