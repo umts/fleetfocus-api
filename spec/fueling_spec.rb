@@ -46,4 +46,23 @@ RSpec.describe Fueling do
     expect(ta_parsed).to eq(without_scope.ftk_date)
     expect(tai_parsed).to eq(without_scope.X_datetime_insert)
   end
+
+  describe '#inspect' do
+    let :fueling do
+      create :fueling,
+             EQ_equip_no: '3333',
+             qty_fuel: 12.3,
+             ftk_date: Time.new(2000, 1, 1)
+    end
+    let :call do
+      fueling.inspect
+    end
+
+    it 'contains the class name and key attributes' do
+      expect(call).to match(/^#<Fueling/)
+      expect(call).to match(/\{.*?vehicle.*?"3333"/)
+      expect(call).to match(/\{.*?amount.*?12\.3/)
+      expect(call).to match(/\{.*?time_at.*?2000-01-01 00:/)
+    end
+  end
 end

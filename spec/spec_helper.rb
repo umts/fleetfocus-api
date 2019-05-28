@@ -1,5 +1,16 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.start do
+  load_profile 'test_frameworks'
+
+  add_filter %r{^/config/}
+  add_filter %r{^/db/}
+  add_filter 'lib/console.rb'
+
+  track_files 'lib/**/*.rb'
+end
+
 ENV['RACK_ENV'] = 'test'
 
 require 'bundler'
