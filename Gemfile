@@ -3,6 +3,8 @@
 source 'https://rubygems.org'
 ruby IO.read(File.expand_path('.ruby-version', __dir__)).strip
 
+gem 'json'
+gem 'psych'
 gem 'sinatra',              require: 'sinatra/base'
 gem 'sinatra-activerecord', require: 'sinatra/activerecord'
 
@@ -26,5 +28,6 @@ group :development do
   gem 'capistrano-bundler',      require: false
   gem 'capistrano-passenger',    require: false
   gem 'capistrano-pending',      require: false
+  gem 'irb'
   gem 'pry'
 end
