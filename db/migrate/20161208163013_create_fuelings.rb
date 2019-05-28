@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateFuelings < ActiveRecord::Migration
+class CreateFuelings < ActiveRecord::Migration[4.2]
   def change
     # note that this is a partial table compared to what's in the EAM DB,
     # but it contains all of the columns we actually use in this application.

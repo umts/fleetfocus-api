@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Fueling < ActiveRecord::Base
-  self.table_name = 'emsdba.FTK_MAIN'
+  self.table_name_prefix = 'emsdba.' unless test?
+  self.table_name = 'FTK_MAIN'
   self.primary_key = 'row_id'
   self.default_timezone = :local
 
@@ -22,6 +23,10 @@ class Fueling < ActiveRecord::Base
   end
 
   def readonly?
-    ENV['RACK_ENV'] == 'test' ? super : true
+    test? ? super : true
+  end
+
+  def test?
+    ENV['RACK_ENV'] == 'test'
   end
 end
