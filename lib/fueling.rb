@@ -16,7 +16,13 @@ class Fueling < ActiveRecord::Base
   end
 
   def inspect
-    "#<#{self.class} #{attributes.slice('EQ_equip_no', 'amount', 'time_at')}>"
+    attributes = {
+                   'vehicle' => self['EQ_equip_no'],
+                   'amount' => (self['amount'] || self['qty_fuel']).to_f,
+                   'time_at' => self['time_at'] || self['ftk_date']
+                  }
+
+    "#<#{self.class} #{attributes}>"
   end
 
   def readonly?
