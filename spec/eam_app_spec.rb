@@ -38,11 +38,11 @@ RSpec.describe EAMApp do
 
   context 'with a vehicle id' do
     before :each do
-      @thirty_days_ago = 30.days.ago
-      @twenty_days_ago = 20.days.ago
+      @thirty_days_ago = 30.days.ago.change(sec: 0)
+      @twenty_days_ago = 20.days.ago.change(sec: 0)
       create :fueling, ftk_date: @thirty_days_ago
       create :fueling, ftk_date: @twenty_days_ago
-      create :fueling
+      create :fueling, ftk_date: Date.current.beginning_of_day
       create :fueling, EQ_equip_no: '3315'
     end
 
@@ -50,6 +50,15 @@ RSpec.describe EAMApp do
       get '/vehicle/3201'
       expect(fueling.count).to be(3)
       expect(buses).not_to include('3315')
+    end
+
+    it 'returns the fuelings, most recent first' do
+      get '/vehicle/3201'
+      first_fueling_time = Time.parse(fueling.first.fetch('time_at'))
+      last_fueling_time = Time.parse(fueling.last.fetch('time_at'))
+
+      expect(first_fueling_time).to eq(Date.current.beginning_of_day)
+      expect(last_fueling_time).to eq(@thirty_days_ago)
     end
 
     context 'and a single timestamp' do
@@ -69,11 +78,8 @@ RSpec.describe EAMApp do
         get "/vehicle/3201/#{d1}/#{d2}"
         expect(fueling.count).to be(1)
 
-        # '@twenty_days_ago.zone' and to_i to work-around a problem
-        # with sqlite and 'AS'
-        time_of_fueling = Time.parse(fueling.first.fetch('time_at') +
-                                     @twenty_days_ago.zone).to_i
-        expect(time_of_fueling).to eq(@twenty_days_ago.to_i)
+        time_of_fueling = Time.parse(fueling.first.fetch('time_at'))
+        expect(time_of_fueling).to eq(@twenty_days_ago)
       end
     end
   end
