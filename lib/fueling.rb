@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Fueling < ActiveRecord::Base
-  self.table_name = 'emsdba.FTK_MAIN'
+  self.table_name_prefix = 'emsdba.' unless ENV['RACK_ENV'] == 'test'
+  self.table_name = 'FTK_MAIN'
   self.primary_key = 'row_id'
   self.default_timezone = :local
 
@@ -15,10 +16,7 @@ class Fueling < ActiveRecord::Base
   end
 
   def inspect
-    attrs = { vehicle: self.EQ_equip_no,
-              amount: qty_fuel.to_f,
-              time_at: ftk_date }
-    "#<#{self.class} #{attrs}>"
+    "#<#{self.class} #{attributes.slice('EQ_equip_no', 'amount', 'time_at')}>"
   end
 
   def readonly?

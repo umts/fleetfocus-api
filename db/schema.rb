@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208163013) do
+ActiveRecord::Schema.define(version: 20190528161310) do
 
-  create_table "emsdba.FTK_MAIN", primary_key: "row_id", force: :cascade do |t|
+  create_table "FTK_MAIN", primary_key: "row_id", force: :cascade do |t|
     t.decimal  "qty_fuel"
     t.integer  "meter_1"
     t.datetime "ftk_date"
