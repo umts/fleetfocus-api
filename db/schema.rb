@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190528161310) do
+ActiveRecord::Schema.define(version: 2019_05_28_161310) do
 
   create_table "FTK_MAIN", primary_key: "row_id", force: :cascade do |t|
-    t.decimal  "qty_fuel"
-    t.integer  "meter_1"
+    t.decimal "qty_fuel"
+    t.integer "meter_1"
     t.datetime "ftk_date"
     t.datetime "X_datetime_insert"
-    t.string   "EQ_equip_no"
+    t.string "EQ_equip_no"
   end
 
 end

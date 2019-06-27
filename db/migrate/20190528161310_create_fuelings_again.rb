@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateFuelingsAgain < ActiveRecord::Migration
+class CreateFuelingsAgain < ActiveRecord::Migration[4.2]
   def up
     return if table_exists? 'FTK_MAIN'
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class RenameFuelings < ActiveRecord::Migration
+class RenameFuelings < ActiveRecord::Migration[4.2]
   def change
     return if ActiveRecord.version >= Gem::Version.new('5.0')
 
