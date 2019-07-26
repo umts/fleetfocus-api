@@ -20,21 +20,26 @@ class EAMApp < Sinatra::Base
 
   before do
     env['rack.errors'] = settings.error_log
-    content_type :json
   end
 
   after do
-    response.body = build_response(@fuelings).to_json if response.ok?
+    if @fuelings.present?
+      response.body = jbuilder :fueling
+    else
+      response.status = 404
+    end
   end
 
   get '/vehicle/:name' do
     @fuelings = Fueling.where('EQ_equip_no = ?', params[:name])
+                       .order('ftk_date DESC')
   end
 
   get '/vehicle/:name/:datetime' do
     start_date = Time.at(params[:datetime].to_i)
     @fuelings = Fueling.where('EQ_equip_no = ? AND ftk_date > ?',
                               params[:name], start_date)
+                       .order('ftk_date DESC')
   end
 
   get '/vehicle/:name/:start_datetime/:end_datetime' do
@@ -43,11 +48,13 @@ class EAMApp < Sinatra::Base
     @fuelings =
       Fueling.where('EQ_equip_no = ? AND ftk_date > ? AND ftk_date < ?',
                     params[:name], start_date, end_date)
+             .order('ftk_date DESC')
   end
 
   get '/all/:datetime' do
     start_date = Time.at(params[:datetime].to_i)
     @fuelings = Fueling.where('ftk_date > ?', start_date)
+                       .order('ftk_date DESC')
   end
 
   get '/all/:start_datetime/:end_datetime' do
@@ -55,6 +62,7 @@ class EAMApp < Sinatra::Base
     end_date = Time.at(params[:end_datetime].to_i)
     @fuelings = Fueling.where('ftk_date > ? AND ftk_date < ?',
                               start_date, end_date)
+                       .order('ftk_date DESC')
   end
 
   get '/*' do
@@ -62,20 +70,7 @@ class EAMApp < Sinatra::Base
   end
 
   error 404 do
-    'Error 404. Webpage Not Found.'
-  end
-
-  helpers do
-    def build_response(fuelings)
-      if fuelings.present?
-        { connection_valid: true,
-          error: '',
-          fueling: fuelings.as_json(except: 'row_id') }
-      else
-        { connection_valid: false,
-          error: 'Your query has returned no results.
-          Please contact IT for further assistance.'.gsub(/  +/, ' ') }
-      end
-    end
+    content_type :json
+    { connection_valid: false, error: 'No results' }.to_json
   end
 end

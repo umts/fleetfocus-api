@@ -7,6 +7,7 @@ gem 'json'
 gem 'psych'
 gem 'sinatra',              require: 'sinatra/base'
 gem 'sinatra-activerecord', require: 'sinatra/activerecord'
+gem 'tilt-jbuilder',        require: 'sinatra/jbuilder'
 
 group :production, :development do
   gem 'activerecord-sqlserver-adapter', '~> 5.2.0'
