@@ -4,8 +4,6 @@ env:
 sudo: required
 before_install:
   - sudo ./spec/bin/install-freetds.sh
-  - gem update --system
-  - gem install bundler
 before_script:
   - cp config/database.yml.example config/database.yml
   - bundle exec rake db:create
