@@ -55,6 +55,7 @@ RSpec.describe EAMApp do
       create :fueling, ftk_date: twenty_days_ago
       create :fueling, ftk_date: today
       create :fueling, EQ_equip_no: '3315'
+      get '/vehicle/3201'
     end
 
     it 'returns all fuelings for that vehicle' do
@@ -62,12 +63,10 @@ RSpec.describe EAMApp do
     end
 
     it 'returns only fuelings for that vehicle' do
-      get '/vehicle/3201'
       expect(buses).not_to include('3315')
     end
 
     it 'returns the fuelings, most recent first' do
-      get '/vehicle/3201'
       fueling_times = fueling.map { |f| Time.parse(f.fetch('time_at')) }
 
       expect(fueling_times).to contain_exactly(
