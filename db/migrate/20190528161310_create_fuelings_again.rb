@@ -4,7 +4,7 @@ class CreateFuelingsAgain < ActiveRecord::Migration[4.2]
   def up
     return if table_exists? 'FTK_MAIN'
 
-    # note that this is a partial table compared to what's in the EAM DB,
+    # NOTE: This is a partial table compared to what's in the EAM DB,
     # but it contains all of the columns we actually use in this application.
     create_table 'FTK_MAIN', primary_key: 'row_id' do |t|
       t.decimal  'qty_fuel'
