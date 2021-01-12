@@ -1,3 +1,5 @@
+require: 'rubocop-rspec'
+
 AllCops:
   Include:
     - Capfile
@@ -8,11 +10,19 @@ AllCops:
   Exclude:
     - 'config/**/*'
     - 'db/schema.rb'
+  NewCops: enable
 
-Style/Documentation:
-  Enabled: false
+Layout/ExtraSpacing:
+  Exclude:
+    - Gemfile
 
 Metrics/BlockLength:
   Exclude:
     - config/**/*
     - spec/**/*
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 6
+
+Style/Documentation:
+  Enabled: false
