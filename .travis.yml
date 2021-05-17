@@ -3,9 +3,10 @@ cache: bundler
 env:
   global:
     - RACK_ENV=test
-sudo: required
-before_install:
-  - sudo ./spec/bin/install-freetds.sh
+install:
+  - bundle config set --local deployment 'true'
+  - bundle config set --local with 'test'
+  - bundle install --jobs=3 --retry=3
 before_script:
   - cp config/database.yml.example config/database.yml
   - bundle exec rake db:create db:migrate
