@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 ruby IO.read(File.expand_path('.ruby-version', __dir__)).strip
 
+gem 'exception_notification'
 gem 'json'
 gem 'psych'
 gem 'sinatra',              require: 'sinatra/base'

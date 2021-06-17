@@ -7,6 +7,7 @@ SimpleCov.start do
   add_filter %r{^/config/}
   add_filter %r{^/db/}
   add_filter 'lib/console.rb'
+  add_filter 'lib/exception_notifier'
 
   track_files 'lib/**/*.rb'
 end
