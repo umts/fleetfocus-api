@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 ruby IO.read(File.expand_path('.ruby-version', __dir__)).strip
 
+gem 'exception_notification'
 gem 'json'
 gem 'psych'
 gem 'sinatra',              require: 'sinatra/base'
@@ -10,8 +11,7 @@ gem 'sinatra-activerecord', require: 'sinatra/activerecord'
 gem 'tilt-jbuilder',        require: 'sinatra/jbuilder'
 
 group :production, :development do
-  gem 'activerecord-sqlserver-adapter', '~> 6.0.0'
-  gem 'tiny_tds', '= 2.1.3'
+  gem 'activerecord-sqlserver-adapter', '~> 6.1.0'
 end
 
 group :test do

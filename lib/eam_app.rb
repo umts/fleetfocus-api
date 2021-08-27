@@ -1,25 +1,15 @@
 # frozen_string_literal: true
 
+require 'app_logs'
+require 'exception_notifier/umts_notifier'
+
 class EAMApp < Sinatra::Base
+  register AppLogs
   register Sinatra::ActiveRecordExtension
+  use ExceptionNotification::Rack, umts: { env: settings.environment }
 
   configure do
     set :root, File.join(File.dirname(settings.app_file), '..')
-    access_log_file = "#{settings.root}/log/#{settings.environment}_access.log"
-    error_log_file = "#{settings.root}/log/#{settings.environment}_error.log"
-    access_log = File.new(access_log_file, 'a+')
-    error_log = File.new(error_log_file, 'a+')
-    access_log.sync = true
-    error_log.sync = true
-    set :access_log, access_log
-    set :error_log, error_log
-
-    enable :logging
-    use Rack::CommonLogger, settings.access_log
-  end
-
-  before do
-    env['rack.errors'] = settings.error_log
   end
 
   after do
