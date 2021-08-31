@@ -6,6 +6,7 @@ ruby IO.read(File.expand_path('.ruby-version', __dir__)).strip
 gem 'exception_notification'
 gem 'json'
 gem 'psych'
+gem 'rake'
 gem 'sinatra',              require: 'sinatra/base'
 gem 'sinatra-activerecord', require: 'sinatra/activerecord'
 gem 'tilt-jbuilder',        require: 'sinatra/jbuilder'

@@ -1,13 +1,16 @@
 language: ruby
+cache: bundler
 env:
-  - RACK_ENV=test
-sudo: required
-before_install:
-  - sudo ./spec/bin/install-freetds.sh
+  global:
+    - RACK_ENV=test
+install:
+  - bundle config set --local deployment 'true'
+  - bundle config set --local with 'test'
+  - bundle config set --local without 'development:production'
+  - bundle install --jobs=3 --retry=3
 before_script:
   - cp config/database.yml.example config/database.yml
-  - bundle exec rake db:create
-  - bundle exec rake db:migrate
+  - bundle exec rake db:create db:migrate
 script:
   - bundle exec rspec
 branches:

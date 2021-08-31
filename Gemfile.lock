@@ -199,6 +199,7 @@ DEPENDENCIES
   pry
   psych
   rack-test
+  rake
   rspec
   rubocop
   rubocop-rspec
