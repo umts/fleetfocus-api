@@ -8,6 +8,8 @@ set :deploy_to, "/srv/#{fetch :application}"
 
 set :log_level, :info
 
+set :capistrano_pending_role, :app
+
 append :linked_files, 'config/database.yml'
 append :linked_dirs, '.bundle', 'log', 'tmp/pids'
 
