@@ -15,7 +15,7 @@ script:
   - bundle exec rspec
 branches:
   only:
-  - master
+  - main
 notifications:
   email:
     on_success: never
