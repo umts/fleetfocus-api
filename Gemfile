@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby IO.read(File.expand_path('.ruby-version', __dir__)).strip
+ruby File.read(File.expand_path('.ruby-version', __dir__)).strip
+rails_version = File.read(File.expand_path('.rails-version', __dir__)).strip
 
 gem 'exception_notification'
 gem 'json'
@@ -13,7 +14,7 @@ gem 'sinatra-activerecord', require: 'sinatra/activerecord'
 gem 'tilt-jbuilder',        require: 'sinatra/jbuilder'
 
 group :production, :development do
-  gem 'activerecord-sqlserver-adapter', '~> 6.1.0'
+  gem 'activerecord-sqlserver-adapter', rails_version
 end
 
 group :test do

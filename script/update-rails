@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+rails_version=$(<.rails-version)
+
+bundle add rails --version "$rails_version"
+bundle update rails
+bundle remove rails
