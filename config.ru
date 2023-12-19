@@ -6,7 +6,7 @@ require 'bundler'
 
 $LOAD_PATH.unshift File.join(__dir__, 'lib')
 
-env = ENV['RACK_ENV']
+env = ENV.fetch 'RACK_ENV', 'development'
 Bundler.require(:default, env)
 
 require 'fueling'
