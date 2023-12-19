@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby File.read(File.expand_path('.ruby-version', __dir__)).strip
+ruby file: '.ruby-version'
 
 rails_version_file = File.expand_path('.rails-version', __dir__)
 rails_version = File.exist?(rails_version_file) ? File.read(rails_version_file).strip : nil
