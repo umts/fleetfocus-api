@@ -208,7 +208,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-sqlserver-adapter
+  activerecord-sqlserver-adapter (~> 7.0.0)
   bcrypt_pbkdf (>= 1.0, < 2.0)
   capistrano (~> 3.14)
   capistrano-bundler
