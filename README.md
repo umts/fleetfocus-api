@@ -81,15 +81,12 @@ API URLs
 
 Running the app
 ===============
-It's a [Sinatra][3] application, so it can run under any [Rack][4]-compatible
-web server.
-
 ```bash
-$ rackup
-[2016-12-13 09:07:50] INFO  WEBrick 1.3.1
-[2016-12-13 09:07:50] INFO  ruby 2.3.2 (2016-11-15) [x86_64-linux]
-[2016-12-13 09:07:50] INFO  WEBrick::HTTPServer#start: pid=4288 port=9292
+script/server
 ```
+
+will start the development server using Puma. Alternately, it's a [Sinatra][3]
+application, so it can run under any [Rack][4]-compatible web server.
 
 License
 =======
