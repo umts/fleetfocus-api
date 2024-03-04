@@ -1,3 +1,23 @@
-#!/bin/bash
-script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-irb -I "$script_dir/../lib" -r 'console'
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'bundler'
+
+$LOAD_PATH.unshift File.join(__dir__, '..', 'lib')
+Bundler.require(:default, :development)
+
+require 'fueling'
+require 'eam_app'
+
+$stdout.sync = true
+IRB.setup nil
+IRB.conf.tap do |c|
+  prompt = c[:PROMPT][:DEFAULT].dup
+  prompt[:RETURN].prepend '#'
+
+  c[:IRB_NAME] = 'fleetfocus-api'
+  c[:PROMPT][:CUSTOM] = prompt
+  c[:PROMPT_MODE] = :CUSTOM
+end
+
+IRB::Irb.new.run(IRB.conf)
