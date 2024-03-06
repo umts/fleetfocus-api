@@ -268,7 +268,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activerecord-sqlserver-adapter (~> 7.0.0)
+  activerecord-sqlserver-adapter
   bcrypt_pbkdf (>= 1.0, < 2.0)
   capistrano (~> 3.14)
   capistrano-bundler

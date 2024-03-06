@@ -2,21 +2,20 @@
 
 source 'https://rubygems.org'
 ruby file: '.ruby-version'
-rails_version = '~> 7.0.0'
 
 gem 'exception_notification'
 gem 'irb'
 gem 'json'
 gem 'psych'
 gem 'puma'
-gem 'rails', rails_version, install_if: false
+gem 'rails', '~> 7.0.0', install_if: false
 gem 'rake'
 gem 'sinatra',              require: 'sinatra/base'
 gem 'sinatra-activerecord', require: 'sinatra/activerecord'
 gem 'tilt-jbuilder',        require: 'sinatra/jbuilder'
 
 group :production, :development do
-  gem 'activerecord-sqlserver-adapter', rails_version
+  gem 'activerecord-sqlserver-adapter'
 end
 
 group :test do
