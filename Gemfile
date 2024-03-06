@@ -7,6 +7,7 @@ rails_version_file = File.expand_path('.rails-version', __dir__)
 rails_version = File.exist?(rails_version_file) ? File.read(rails_version_file).strip : nil
 
 gem 'exception_notification'
+gem 'irb'
 gem 'json'
 gem 'psych'
 gem 'puma'
@@ -37,6 +38,4 @@ group :development do
   gem 'capistrano-passenger',            require: false
   gem 'capistrano-pending',              require: false
   gem 'ed25519', '>= 1.2', '< 2.0',      require: false
-  gem 'irb'
-  gem 'pry'
 end
