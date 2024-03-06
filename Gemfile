@@ -2,15 +2,14 @@
 
 source 'https://rubygems.org'
 ruby file: '.ruby-version'
-
-rails_version_file = File.expand_path('.rails-version', __dir__)
-rails_version = File.exist?(rails_version_file) ? File.read(rails_version_file).strip : nil
+rails_version = '~> 7.0.0'
 
 gem 'exception_notification'
 gem 'irb'
 gem 'json'
 gem 'psych'
 gem 'puma'
+gem 'rails', rails_version, install_if: false
 gem 'rake'
 gem 'sinatra',              require: 'sinatra/base'
 gem 'sinatra-activerecord', require: 'sinatra/activerecord'
