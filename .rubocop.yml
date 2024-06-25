@@ -13,9 +13,9 @@ AllCops:
   NewCops: enable
 
 Metrics/BlockLength:
-  Exclude:
-    - config/**/*
-    - spec/**/*
+  AllowedMethods:
+    - context
+    - describe
 
 Style/Documentation:
   Enabled: false
