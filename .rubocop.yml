@@ -12,10 +12,6 @@ AllCops:
     - 'db/schema.rb'
   NewCops: enable
 
-Layout/ExtraSpacing:
-  Exclude:
-    - Gemfile
-
 Metrics/BlockLength:
   Exclude:
     - config/**/*
