@@ -13,17 +13,10 @@ AllCops:
     - 'db/schema.rb'
   NewCops: enable
 
-Layout/ExtraSpacing:
-  Exclude:
-    - Gemfile
-
 Metrics/BlockLength:
-  Exclude:
-    - config/**/*
-    - spec/**/*
-
-RSpec/MultipleMemoizedHelpers:
-  Max: 6
+  AllowedMethods:
+    - context
+    - describe
 
 Style/Documentation:
   Enabled: false
