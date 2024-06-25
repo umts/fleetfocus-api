@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2019_05_28_161310) do
+ActiveRecord::Schema[7.1].define(version: 2019_05_28_161310) do
   create_table "FTK_MAIN", primary_key: "row_id", force: :cascade do |t|
     t.decimal "qty_fuel"
     t.integer "meter_1"
