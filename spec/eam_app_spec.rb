@@ -46,14 +46,10 @@ RSpec.describe EAMApp do
   end
 
   context 'with a vehicle id' do
-    let(:thirty_days_ago) { 30.days.ago.change(sec: 0) }
-    let(:twenty_days_ago) { 20.days.ago.change(sec: 0) }
-    let(:today) { Date.current.beginning_of_day }
+    let(:fuel_dates) { [30.days.ago.change(sec: 0), 20.days.ago.change(sec: 0), Date.current.beginning_of_day] }
 
     before do
-      create :fueling, ftk_date: thirty_days_ago
-      create :fueling, ftk_date: twenty_days_ago
-      create :fueling, ftk_date: today
+      fuel_dates.each { |date| create :fueling, ftk_date: date }
       create :fueling, EQ_equip_no: '3315'
       get '/vehicle/3201'
     end
@@ -69,9 +65,7 @@ RSpec.describe EAMApp do
     it 'returns the fuelings, most recent first' do
       fueling_times = fueling.map { |f| Time.parse(f.fetch('time_at')) }
 
-      expect(fueling_times).to contain_exactly(
-        today, twenty_days_ago, thirty_days_ago
-      )
+      expect(fueling_times).to contain_exactly(*fuel_dates)
     end
 
     context 'with a single timestamp' do
@@ -100,7 +94,7 @@ RSpec.describe EAMApp do
 
       it 'returns only fuelings between those timestamps' do
         time_of_fueling = Time.parse(fueling.first.fetch('time_at'))
-        expect(time_of_fueling).to eq(twenty_days_ago)
+        expect(time_of_fueling).to eq(fuel_dates[1])
       end
     end
   end

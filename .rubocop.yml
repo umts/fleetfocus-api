@@ -17,8 +17,5 @@ Metrics/BlockLength:
     - config/**/*
     - spec/**/*
 
-RSpec/MultipleMemoizedHelpers:
-  Max: 6
-
 Style/Documentation:
   Enabled: false
