@@ -1,0 +1,18 @@
+name: setup
+description: Set up repository
+inputs:
+  database:
+    description: Create database and load schema
+    required: true
+    default: ''
+runs:
+  using: composite
+  steps:
+    - run: sudo apt-get update
+      shell: bash
+    - run: sudo apt-get install freetds-dev
+      shell: bash
+    - uses: actions/checkout@v1
+    - uses: ruby/setup-ruby@v1
+    - run: ${{ inputs.database == '' && 'SKIP_DATABASE=1' || '' }} script/setup
+      shell: bash

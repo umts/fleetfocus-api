@@ -10,18 +10,14 @@ jobs:
   rubocop:
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt-get update
-      - run: sudo apt-get install freetds-dev
-      - uses: actions/checkout@v1
-      - uses: ruby/setup-ruby@v1
-      - run: bundle install
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
       - run: bin/rubocop
   rspec:
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt-get update
-      - run: sudo apt-get install freetds-dev
       - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
-      - run: script/setup
+      - uses: ./.github/actions/setup
+        with:
+          database: true
       - run: bin/rspec
