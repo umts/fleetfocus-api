@@ -26,7 +26,7 @@ group :test do
   gem 'rubocop',             require: false
   gem 'rubocop-rspec',       require: false
   gem 'simplecov',           require: false
-  gem 'sqlite3', '~> 1.4.2'
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :development do

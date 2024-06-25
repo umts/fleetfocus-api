@@ -1,5 +1,5 @@
 config/database.yml
-db/test.db
+db/test.db*
 
 log/*
 
