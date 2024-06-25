@@ -14,5 +14,7 @@ runs:
       shell: bash
     - uses: actions/checkout@v1
     - uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
     - run: ${{ inputs.database == '' && 'SKIP_DATABASE=1' || '' }} script/setup
       shell: bash
