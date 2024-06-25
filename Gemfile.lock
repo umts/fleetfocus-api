@@ -263,7 +263,9 @@ GEM
     sinatra-activerecord (2.0.27)
       activerecord (>= 4.1)
       sinatra (>= 1.0)
-    sqlite3 (1.4.2)
+    sqlite3 (2.0.2)
+      mini_portile2 (~> 2.8.0)
+    sqlite3 (2.0.2-x86_64-linux-gnu)
     sshkit (1.21.6)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
@@ -312,7 +314,7 @@ DEPENDENCIES
   simplecov
   sinatra
   sinatra-activerecord
-  sqlite3 (~> 1.4.2)
+  sqlite3 (~> 2.0.2)
   tilt-jbuilder
 
 RUBY VERSION
