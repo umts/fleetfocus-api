@@ -8,6 +8,7 @@ AllCops:
     - config.ru
     - '**/*.rb'
   Exclude:
+    - 'bin/**/*'
     - 'config/**/*'
     - 'db/schema.rb'
   NewCops: enable
