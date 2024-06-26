@@ -21,7 +21,7 @@ class EAMApp < Sinatra::Base
   end
 
   get '/vehicle/:name' do
-    @fuelings = Fueling.where('EQ_equip_no = ?', params[:name])
+    @fuelings = Fueling.where(EQ_equip_no: params[:name])
                        .order('ftk_date DESC')
   end
 
