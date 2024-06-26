@@ -65,7 +65,7 @@ RSpec.describe EAMApp do
     it 'returns the fuelings, most recent first' do
       fueling_times = fueling.map { |f| Time.parse(f.fetch('time_at')) }
 
-      expect(fueling_times).to contain_exactly(*fuel_dates)
+      expect(fueling_times).to match_array(fuel_dates)
     end
 
     context 'with a single timestamp' do
