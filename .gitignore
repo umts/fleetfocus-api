@@ -3,5 +3,4 @@ db/test.db*
 
 log/*
 
-coverage/**/*
-!coverage/.last_run.json
+/coverage/
