@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'fueling'
 require 'eam_app'
 require 'json'
 

@@ -9,7 +9,6 @@ $LOAD_PATH.unshift File.join(__dir__, 'lib')
 env = ENV.fetch 'RACK_ENV', 'development'
 Bundler.require(:default, env)
 
-require 'fueling'
 require 'eam_app'
 
 run EAMApp

@@ -2,6 +2,7 @@
 
 require 'app_logs'
 require 'exception_notifier/umts_notifier'
+require 'fueling'
 
 class EAMApp < Sinatra::Base
   register AppLogs
