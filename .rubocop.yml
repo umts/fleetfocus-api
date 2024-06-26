@@ -17,5 +17,8 @@ Metrics/BlockLength:
     - context
     - describe
 
+Rails/CreateTableWithTimestamps:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
