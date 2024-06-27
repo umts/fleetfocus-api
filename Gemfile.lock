@@ -85,7 +85,7 @@ GEM
     bcrypt_pbkdf (1.1.1)
     bigdecimal (3.1.8)
     builder (3.2.4)
-    capistrano (3.16.0)
+    capistrano (3.19.0)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
@@ -296,7 +296,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-sqlserver-adapter
   bcrypt_pbkdf (>= 1.0, < 2.0)
-  capistrano (~> 3.14)
+  capistrano (~> 3.19)
   capistrano-bundler
   capistrano-passenger
   capistrano-pending
