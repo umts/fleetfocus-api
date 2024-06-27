@@ -16,7 +16,9 @@ module ExceptionNotifier
     end
 
     def call(exception, options = {})
+      # :nocov:
       super if @env == 'production'
+      # :nocov:
     end
   end
 end
