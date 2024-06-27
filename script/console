@@ -6,7 +6,6 @@ require 'bundler'
 $LOAD_PATH.unshift File.join(__dir__, '..', 'lib')
 Bundler.require(:default, :development)
 
-require 'fueling'
 require 'eam_app'
 
 $stdout.sync = true
