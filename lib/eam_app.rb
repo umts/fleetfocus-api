@@ -2,6 +2,7 @@
 
 require 'app_logs'
 require 'exception_notifier/umts_notifier'
+require 'fueling'
 
 class EAMApp < Sinatra::Base
   register AppLogs
@@ -21,7 +22,7 @@ class EAMApp < Sinatra::Base
   end
 
   get '/vehicle/:name' do
-    @fuelings = Fueling.where('EQ_equip_no = ?', params[:name])
+    @fuelings = Fueling.where(EQ_equip_no: params[:name])
                        .order('ftk_date DESC')
   end
 

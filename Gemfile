@@ -23,17 +23,20 @@ group :test do
   gem 'factory_bot'
   gem 'rack-test', require: 'rack/test'
   gem 'rspec'
-  gem 'rubocop', require: false
-  gem 'rubocop-rspec', require: false
   gem 'simplecov', require: false
   gem 'sqlite3', '~> 1.4'
 end
 
 group :development do
   gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0', require: false
-  gem 'capistrano', '~> 3.14', require: false
+  gem 'capistrano', '~> 3.19', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-passenger', require: false
   gem 'capistrano-pending', require: false
   gem 'ed25519', '>= 1.2', '< 2.0', require: false
+  gem 'rubocop', require: false
+  gem 'rubocop-factory_bot', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rake', require: false
+  gem 'rubocop-rspec', require: false
 end

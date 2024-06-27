@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-ActiveRecord.default_timezone = :local
+require 'application_record'
 
-class Fueling < ActiveRecord::Base
+class Fueling < ApplicationRecord
   self.table_name_prefix = 'emsdba.' unless ENV['RACK_ENV'] == 'test'
   self.table_name = 'FTK_MAIN'
   self.primary_key = 'row_id'
