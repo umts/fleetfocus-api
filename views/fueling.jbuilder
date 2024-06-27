@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.connection_valid true
 json.error ''
 json.fueling @fuelings do |fueling|

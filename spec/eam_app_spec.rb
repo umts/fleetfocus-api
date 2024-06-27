@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'fueling'
 require 'eam_app'
 require 'json'
 
@@ -16,7 +15,7 @@ RSpec.describe EAMApp do
 
   context 'when requesting valid data' do
     before do
-      create :fueling
+      create(:fueling)
       get '/all/0'
     end
 
@@ -49,8 +48,8 @@ RSpec.describe EAMApp do
     let(:fuel_dates) { [30.days.ago.change(sec: 0), 20.days.ago.change(sec: 0), Date.current.beginning_of_day] }
 
     before do
-      fuel_dates.each { |date| create :fueling, ftk_date: date }
-      create :fueling, EQ_equip_no: '3315'
+      fuel_dates.each { |date| create(:fueling, ftk_date: date) }
+      create(:fueling, EQ_equip_no: '3315')
       get '/vehicle/3201'
     end
 
@@ -101,10 +100,10 @@ RSpec.describe EAMApp do
 
   context 'with /all/ as the specified vehicle' do
     before do
-      create :fueling, ftk_date: 30.days.ago, EQ_equip_no: '3301'
-      create :fueling, ftk_date: 20.days.ago, EQ_equip_no: '3302'
-      create :fueling, ftk_date: 10.days.ago, EQ_equip_no: '3303'
-      create :fueling, EQ_equip_no: '3304'
+      create(:fueling, ftk_date: 30.days.ago, EQ_equip_no: '3301')
+      create(:fueling, ftk_date: 20.days.ago, EQ_equip_no: '3302')
+      create(:fueling, ftk_date: 10.days.ago, EQ_equip_no: '3303')
+      create(:fueling, EQ_equip_no: '3304')
     end
 
     it 'is invalid without timestamps' do

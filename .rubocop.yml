@@ -1,23 +1,27 @@
-require: 'rubocop-rspec'
+require:
+  - rubocop-factory_bot
+  - rubocop-rails
+  - rubocop-rake
+  - rubocop-rspec
 
 AllCops:
-  Include:
-    - Capfile
-    - Gemfile
-    - Rakefile
-    - config.ru
-    - '**/*.rb'
   Exclude:
-    - 'bin/**/*'
-    - 'config/**/*'
-    - 'db/schema.rb'
-    - 'vendor/**/*'
+    - bin/**/*
+    - config/**/*
+    - db/schema.rb
+    - vendor/**/*
   NewCops: enable
 
 Metrics/BlockLength:
   AllowedMethods:
     - context
     - describe
+
+Rails/CreateTableWithTimestamps:
+  Enabled: false
+
+Rails/TimeZone:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
