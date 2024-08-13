@@ -7,4 +7,7 @@ Bundler.require(:default, env)
 $LOAD_PATH.unshift File.join(__dir__, 'lib')
 
 # development and production use an unmodifiable db
-require 'sinatra/activerecord/rake' if env == 'test'
+if env == 'test'
+  require 'sinatra/activerecord'
+  require 'sinatra/activerecord/rake'
+end
