@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'app_logs'
+require 'sinatra/activerecord'
 require 'exception_notifier/umts_notifier'
 require 'fueling'
 

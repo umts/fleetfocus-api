@@ -11,7 +11,7 @@ gem 'puma'
 gem 'rails', '~> 7.1.0', install_if: false
 gem 'rake'
 gem 'sinatra', require: 'sinatra/base'
-gem 'sinatra-activerecord', require: 'sinatra/activerecord'
+gem 'sinatra-activerecord', require: false
 gem 'tilt-jbuilder', require: 'sinatra/jbuilder'
 
 group :production, :development do
