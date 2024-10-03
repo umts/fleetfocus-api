@@ -54,7 +54,7 @@ GEM
       activemodel (= 7.2.1)
       activesupport (= 7.2.1)
       timeout (>= 0.4.0)
-    activerecord-sqlserver-adapter (7.2.0)
+    activerecord-sqlserver-adapter (7.2.1)
       activerecord (~> 7.2.0)
       tiny_tds
     activestorage (7.2.1)
