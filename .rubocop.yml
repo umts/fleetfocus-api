@@ -20,6 +20,9 @@ Metrics/BlockLength:
 Rails/CreateTableWithTimestamps:
   Enabled: false
 
+Rails/RakeEnvironment:
+  Enabled: false
+
 Rails/TimeZone:
   Enabled: false
 
