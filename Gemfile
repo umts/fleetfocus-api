@@ -25,7 +25,7 @@ group :test do
   gem 'rack-test', require: 'rack/test'
   gem 'rspec'
   gem 'simplecov', require: false
-  gem 'sqlite3', '~> 1.4'
+  gem 'sqlite3', '>= 2.1'
 end
 
 group :development do
