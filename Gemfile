@@ -8,7 +8,7 @@ gem 'irb'
 gem 'json'
 gem 'psych'
 gem 'puma'
-gem 'rails', '~> 7.2.2', install_if: false
+gem 'rails', '~> 8.0.2', install_if: false
 gem 'rake'
 gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-activerecord', require: false
@@ -25,7 +25,7 @@ group :test do
   gem 'rack-test', require: 'rack/test'
   gem 'rspec'
   gem 'simplecov', require: false
-  gem 'sqlite3', '~> 1.4'
+  gem 'sqlite3', '>= 2.1'
 end
 
 group :development do
