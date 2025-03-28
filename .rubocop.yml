@@ -1,4 +1,4 @@
-require:
+plugins:
   - rubocop-factory_bot
   - rubocop-rails
   - rubocop-rake
@@ -18,6 +18,9 @@ Metrics/BlockLength:
     - describe
 
 Rails/CreateTableWithTimestamps:
+  Enabled: false
+
+Rails/RakeEnvironment:
   Enabled: false
 
 Rails/TimeZone:
