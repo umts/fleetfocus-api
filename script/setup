@@ -20,9 +20,6 @@ FileUtils.chdir APP_ROOT do
   system! 'bin/bundle install' unless system 'bin/bundle check'
   system 'if command -v rbenv &> /dev/null; then rbenv rehash; fi'
 
-  puts "\n== Copying sample files =="
-  FileUtils.cp 'config/database.yml.sample', 'config/database.yml' unless File.exist? 'config/database.yml'
-
   puts "\n== Preparing database =="
   system! 'RACK_ENV=test bin/rake db:prepare' unless ENV.fetch 'SKIP_DATABASE', nil
 end
