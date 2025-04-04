@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'active_support/all'
+require 'active_support/encrypted_configuration'
 require 'app_logs'
 require 'sinatra/activerecord'
 require 'exception_notifier/umts_notifier'
@@ -64,5 +66,14 @@ class EAMApp < Sinatra::Base
   error 404 do
     content_type :json
     { connection_valid: false, error: 'No results' }.to_json
+  end
+
+  def self.credentials
+    @credentials ||= ActiveSupport::EncryptedConfiguration.new(
+      config_path: File.expand_path('../config/credentials.yml.enc', __dir__),
+      key_path: File.expand_path('../config/master.key', __dir__),
+      env_key: 'MASTER_KEY',
+      raise_if_missing_key: false
+    )
   end
 end

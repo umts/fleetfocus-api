@@ -1,6 +1,7 @@
-config/database.yml
 db/test.db*
 
 log/*
 
 /coverage/
+
+*.key

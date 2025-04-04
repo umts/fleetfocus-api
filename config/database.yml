@@ -4,9 +4,9 @@
 development:
   adapter:  sqlserver
   host:     127.0.0.1
-  database: dbname
-  username: username
-  password: password
+  database: <%= EAMApp.credentials.dig(:database, :database) %>
+  username: <%= EAMApp.credentials.dig(:database, :username) %>
+  password: <%= EAMApp.credentials.dig(:database, :password) %>
   port:     14333
 
 test:
