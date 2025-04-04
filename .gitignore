@@ -1,4 +1,4 @@
 /config/database.yml
 /coverage/
-/db/test.db*
 /log/
+/storage/
