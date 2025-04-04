@@ -15,3 +15,5 @@ append :linked_files, 'config/fleetfocus-api.key'
 append :linked_dirs, '.bundle', 'log', 'tmp/pids'
 
 set :passenger_restart_with_sudo, true
+
+before 'deploy:publishing', 'db:check'
