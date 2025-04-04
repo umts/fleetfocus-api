@@ -14,8 +14,8 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential pkg-config libyaml-dev freetds-dev && \
     bundle install && \
     useradd fleetfocus-api --create-home --shell /bin/bash && \
-    mkdir log storage tmp && \
-    chown -R fleetfocus-api log storage tmp
+    mkdir -p log tmp && \
+    chown -R fleetfocus-api log tmp
 
 USER fleetfocus-api:fleetfocus-api
 
