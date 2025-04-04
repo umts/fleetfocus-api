@@ -20,4 +20,4 @@ RUN apt-get update -qq && \
 USER fleetfocus-api:fleetfocus-api
 
 EXPOSE 9292
-CMD ["./script/server"]
+CMD ["script/server", "--port 3000"]
