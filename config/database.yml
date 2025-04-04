@@ -1,4 +1,3 @@
-<% require_relative 'credentials' %>
 production:
   adapter: sqlserver
   host: <%= CREDENTIALS.dig(:database, :host) %>
