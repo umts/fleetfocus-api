@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../config/environment'
+
+system("ssh -v -N -L 1433:#{CREDENTIALS.dig(:database, :host)}:1433 transit-fuel-api.admin.umass.edu")
