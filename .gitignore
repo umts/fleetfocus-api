@@ -1,6 +1,4 @@
-config/database.yml
-db/test.db*
-
-log/*
-
+/config/database.yml
 /coverage/
+/db/test.db*
+/log/
