@@ -35,6 +35,6 @@ RUN useradd fleetfocus-api --create-home --shell /bin/bash && \
 
 USER fleetfocus-api:fleetfocus-api
 
-EXPOSE 9292
+EXPOSE 3000
 
 CMD ["script/server", "--port 3000"]
