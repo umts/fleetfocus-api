@@ -30,6 +30,7 @@ group :test do
 end
 
 group :development do
+  gem 'kamal', require: false
   gem 'rubocop', require: false
   gem 'rubocop-factory_bot', require: false
   gem 'rubocop-rails', require: false
