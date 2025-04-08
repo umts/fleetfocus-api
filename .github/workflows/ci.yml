@@ -1,12 +1,15 @@
 name: ci
 on:
   pull_request:
-    branches:
-      - main
   push:
     branches:
       - main
 jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build --tag fleetfocus-api --build-arg RUBY_VERSION="$(cat .ruby-version)" .
   rubocop:
     runs-on: ubuntu-latest
     steps:

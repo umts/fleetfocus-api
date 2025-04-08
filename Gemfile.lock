@@ -298,6 +298,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-sqlserver-adapter
+  activesupport
   database_cleaner
   exception_notification
   factory_bot
