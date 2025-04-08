@@ -127,4 +127,11 @@ RSpec.describe EAMApp do
       end
     end
   end
+
+  context 'when health checking' do
+    it 'responds successfully' do
+      get '/up'
+      expect(last_response).to be_successful
+    end
+  end
 end
