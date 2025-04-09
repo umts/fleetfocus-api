@@ -2,6 +2,10 @@ ARG RUBY_VERSION=OVERRIDE_ME
 
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim AS base
 
+LABEL org.opencontainers.image.source=https://github.com/umts/fleetfocus-api
+LABEL org.opencontainers.image.description="fleetfocus-api"
+LABEL org.opencontainers.image.licenses=MIT
+
 ENV RACK_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_ONLY="default production" \
@@ -35,6 +39,6 @@ RUN useradd fleetfocus-api --create-home --shell /bin/bash && \
 
 USER fleetfocus-api:fleetfocus-api
 
-EXPOSE 3000
+EXPOSE 80
 
-CMD ["script/server", "--port 3000"]
+CMD ["script/server", "--port 80"]
