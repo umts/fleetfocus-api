@@ -14,17 +14,20 @@ class EAMApp < Sinatra::Base
     set :root, File.join(File.dirname(settings.app_file), '..')
   end
 
-  after do
-    if @fuelings.present?
-      response.body = jbuilder :fueling
-    else
-      response.status = 404
+  helpers do
+    def respond_with_fuelings
+      if @fuelings.present?
+        response.body = jbuilder :fueling
+      else
+        response.status = 404
+      end
     end
   end
 
   get '/vehicle/:name' do
     @fuelings = Fueling.where(EQ_equip_no: params[:name])
                        .order('ftk_date DESC')
+    respond_with_fuelings
   end
 
   get '/vehicle/:name/:datetime' do
@@ -32,6 +35,7 @@ class EAMApp < Sinatra::Base
     @fuelings = Fueling.where('EQ_equip_no = ? AND ftk_date > ?',
                               params[:name], start_date)
                        .order('ftk_date DESC')
+    respond_with_fuelings
   end
 
   get '/vehicle/:name/:start_datetime/:end_datetime' do
@@ -41,12 +45,14 @@ class EAMApp < Sinatra::Base
       Fueling.where('EQ_equip_no = ? AND ftk_date > ? AND ftk_date < ?',
                     params[:name], start_date, end_date)
              .order('ftk_date DESC')
+    respond_with_fuelings
   end
 
   get '/all/:datetime' do
     start_date = Time.at(params[:datetime].to_i)
     @fuelings = Fueling.where('ftk_date > ?', start_date)
                        .order('ftk_date DESC')
+    respond_with_fuelings
   end
 
   get '/all/:start_datetime/:end_datetime' do
@@ -55,6 +61,11 @@ class EAMApp < Sinatra::Base
     @fuelings = Fueling.where('ftk_date > ? AND ftk_date < ?',
                               start_date, end_date)
                        .order('ftk_date DESC')
+    respond_with_fuelings
+  end
+
+  get '/up' do
+    200
   end
 
   get '/*' do
