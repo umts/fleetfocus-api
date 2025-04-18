@@ -1,0 +1,22 @@
+production:
+  adapter: sqlserver
+  host: <%= CREDENTIALS.dig(:database, :host) %>
+  username: <%= CREDENTIALS.dig(:database, :username) %>
+  password: <%= CREDENTIALS.dig(:database, :password) %>
+  database: <%= CREDENTIALS.dig(:database, :database) %>
+  reconnect: true
+
+# Because our application never writes to the database, you can tunnel
+# through the production server to the prod database by running `script/tunnel`.
+development:
+  adapter: sqlserver
+  host: localhost
+  username: <%= CREDENTIALS.dig(:database, :username) %>
+  password: <%= CREDENTIALS.dig(:database, :password) %>
+  database: <%= CREDENTIALS.dig(:database, :database) %>
+
+test:
+  adapter: sqlite3
+  database: storage/test.sqlite3
+  pool: 5
+  timeout: 5000
