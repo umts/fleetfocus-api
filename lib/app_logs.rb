@@ -5,9 +5,9 @@ require 'pathname'
 module AppLogs
   class << self
     def registered(app)
-      @env = app.settings.environment
-      app.set :access_log, access_log!
-      app.set :error_log, error_log!
+      environment = app.settings.environment
+      app.set :access_log, open_log_file!(environment, 'access')
+      app.set :error_log, open_log_file!(environment, 'error')
 
       app.enable :logging
       app.use Rack::CommonLogger, app.settings.access_log
@@ -15,16 +15,11 @@ module AppLogs
       app.before { env['rack.errors'] = app.settings.error_log }
     end
 
-    def access_log!
-      log_path('access').open('a+').tap { |log| log.sync = true }
-    end
+    private
 
-    def error_log!
-      log_path('error').open('a+').tap { |log| log.sync = true }
-    end
-
-    def log_path(type)
-      Pathname(__dir__).expand_path.join('../log', "#{@env}_#{type}.log")
+    def open_log_file!(env, name)
+      log_dir = Pathname(__dir__).join('../log').expand_path.tap(&:mkpath)
+      log_dir.join("#{env}_#{name}.log").open('a+').tap { |file| file.sync = true }
     end
   end
 end
