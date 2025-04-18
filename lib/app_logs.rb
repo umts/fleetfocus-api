@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'fileutils'
 require 'pathname'
 
 module AppLogs
@@ -19,7 +18,7 @@ module AppLogs
     private
 
     def open_log_file!(env, name)
-      log_dir = Pathname(__dir__).join('../log').expand_path.tap { |dir| FileUtils.mkdir_p(dir) }
+      log_dir = Pathname(__dir__).join('../log').expand_path.tap(&:mkpath)
       log_dir.join("#{env}_#{name}.log").open('a+').tap { |file| file.sync = true }
     end
   end
