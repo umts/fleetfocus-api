@@ -9,11 +9,7 @@ SimpleCov.start do
 end
 
 ENV['RACK_ENV'] = 'test'
-
-require 'bundler'
-Bundler.require(:default, :test)
-
-$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
+require_relative '../config/environment'
 
 module RSpecMixin
   include Rack::Test::Methods
