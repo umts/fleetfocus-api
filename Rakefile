@@ -2,6 +2,8 @@
 
 require_relative 'config/environment'
 
+env = ENV.fetch('RACK_ENV', 'development')
+
 # development and production use an unmodifiable db
 if ENV.fetch('RACK_ENV', 'development') == 'test'
   require 'sinatra/activerecord'
