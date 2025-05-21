@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 ruby file: '.ruby-version'
 
+gem 'activesupport', require: 'active_support/all'
 gem 'exception_notification'
 gem 'irb'
 gem 'json'
