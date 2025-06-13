@@ -341,6 +341,7 @@ DEPENDENCIES
   puma
   rack-test
   rails (~> 8.0.2)
+  railties
   rake
   rspec
   rubocop

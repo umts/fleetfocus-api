@@ -36,6 +36,7 @@ group :development do
   gem 'capistrano-passenger', require: false
   gem 'capistrano-pending', require: false
   gem 'ed25519', '>= 1.2', '< 2.0', require: false
+  gem 'railties', require: false
   gem 'rubocop', require: false
   gem 'rubocop-factory_bot', require: false
   gem 'rubocop-rails', require: false
