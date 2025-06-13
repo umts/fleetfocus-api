@@ -34,8 +34,8 @@ COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY . .
 
 RUN useradd fleetfocus-api --create-home --shell /bin/bash && \
-    mkdir -p log tmp && \
-    chown -R fleetfocus-api log tmp
+    mkdir -p log && \
+    chown -R fleetfocus-api log
 
 USER fleetfocus-api:fleetfocus-api
 
