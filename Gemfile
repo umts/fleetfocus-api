@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 ruby file: '.ruby-version'
 
+gem 'activesupport', require: 'active_support/all'
 gem 'exception_notification'
 gem 'irb'
 gem 'json'
@@ -35,6 +36,7 @@ group :development do
   gem 'capistrano-passenger', require: false
   gem 'capistrano-pending', require: false
   gem 'ed25519', '>= 1.2', '< 2.0', require: false
+  gem 'railties', require: false
   gem 'rubocop', require: false
   gem 'rubocop-factory_bot', require: false
   gem 'rubocop-rails', require: false

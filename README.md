@@ -1,40 +1,11 @@
 Introduction
 ============
-This application connects to the Microsoft SQL back-end of a [Trapeze EAM][1]
-installation and provides API endpoints (in JSON format) for fueling
-information.
+This application connects to the Microsoft SQL back-end of a
+[Trapeze EAM](http://www.trapezegroup.com/enterprise-asset-management) installation and provides API endpoints
+(in JSON format) for fueling information.
 
 It's unlikely that this project fulfills a need for anyone other than us, but
 you never know...
-
-Configuration
-=============
-This application only knows how to communicate with the MS-SQL-backed EAM.
-We don't have any experience with the Oracle-backed version, but it might be
-possible: the schema is the same, and there is an Oracle activerecord
-adaptor. PRs welcome.
-
-Create a `database.yml` file in the `config` directory and fill in your
-database information.  The MS-SQL username specified here **only** needs
-read-only access to the `FTK_MAIN` table.
-
-```yaml
-development:
-  adapter:  sqlserver
-  host:     dev.example.com
-  database: dbname
-  username: username
-  password: password
-  
-production:
-  adapter:  sqlserver
-  host:     prod.example.com
-  database: dbname
-  username: username
-  password: password
-```
-
-Install the gem requirements with [Bundler][2].
 
 API
 ===
@@ -79,21 +50,33 @@ API URLs
 > returns all fuelings that happened between the two Unix timestamps, "start"
 > and "end"
 
-Running the app
-===============
-```bash
-script/server
-```
+Development
+===========
+The application was built on the Sinatra framework with ActiveRecord as an ORM. It is recommended you use rbenv to
+install/manage ruby.
 
-will start the development server using Puma. Alternately, it's a [Sinatra][3]
-application, so it can run under any [Rack][4]-compatible web server.
+When running the development server, it is recommended you open a tunnel to the production database using the provided
+script.
+
+Setup
+-----
+1) Install ruby. (`rbenv install`)
+2) Run the setup script. (`bin/setup`)
+3) Place the credentials key file in `config/fleetfocus-api.key`. (Get from KeePass or another developer)
+
+Scripts
+-------
+```bash
+bin/bundle     # install dependencies
+bin/rake       # run tasks
+bin/rspec      # run specs
+bin/rubocop    # run linter
+script/console # run irb
+script/server  # run server - requires database tunnel
+script/setup   # set up development environment
+script/tunnel  # open a database tunnel to the production server - requires ssh access, vpn connection, credentials key
+```
 
 License
 =======
-This code is released under the MIT license.  See the file `LICENSE` for more
-info.
-
-[1]: http://www.trapezegroup.com/enterprise-asset-management
-[2]: http://bundler.io/
-[3]: http://www.sinatrarb.com/
-[4]: http://rack.github.io/
+This code is released under the MIT license.  See the file `LICENSE` for more info.

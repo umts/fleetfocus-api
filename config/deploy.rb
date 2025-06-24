@@ -11,7 +11,7 @@ set :log_level, :info
 
 set :capistrano_pending_role, :app
 
-append :linked_files, 'config/database.yml'
+append :linked_files, 'config/fleetfocus-api.key'
 append :linked_dirs, '.bundle', 'log', 'tmp/pids'
 
 set :passenger_restart_with_sudo, true
