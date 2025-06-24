@@ -1,8 +1,8 @@
 Introduction
 ============
-This application connects to the Microsoft SQL back-end of a [Trapeze EAM][1]
-installation and provides API endpoints (in JSON format) for fueling
-information.
+This application connects to the Microsoft SQL back-end of a
+[Trapeze EAM](http://www.trapezegroup.com/enterprise-asset-management) installation and provides API endpoints
+(in JSON format) for fueling information.
 
 It's unlikely that this project fulfills a need for anyone other than us, but
 you never know...
@@ -52,7 +52,7 @@ API URLs
 
 Development
 ===========
-The application was built on the Sinatra framework with ActiveRecord as an ORM. It is reccommended you use rbenv to
+The application was built on the Sinatra framework with ActiveRecord as an ORM. It is recommended you use rbenv to
 install/manage ruby.
 
 When running the development server, it is recommended you open a tunnel to the production database using the provided
@@ -80,8 +80,3 @@ script/tunnel  # open a database tunnel to the production server - requires ssh 
 License
 =======
 This code is released under the MIT license.  See the file `LICENSE` for more info.
-
-[1]: http://www.trapezegroup.com/enterprise-asset-management
-[2]: http://bundler.io/
-[3]: http://www.sinatrarb.com/
-[4]: http://rack.github.io/
