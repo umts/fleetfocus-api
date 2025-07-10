@@ -61,7 +61,7 @@ script.
 Setup
 -----
 1) Install ruby. (`rbenv install`)
-2) Run the setup script. (`bin/setup`)
+2) Run the setup script. (`script/setup`)
 3) Place the credentials key file in `config/fleetfocus-api.key`. (Get from KeePass or another developer)
 
 Scripts
