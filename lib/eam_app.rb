@@ -26,7 +26,7 @@ class EAMApp < Sinatra::Base
 
   get '/vehicle/:name' do
     @fuelings = Fueling.where(EQ_equip_no: params[:name])
-                       .order('ftk_date DESC')
+                       .order(ftk_date: :desc)
     respond_with_fuelings
   end
 
@@ -34,7 +34,7 @@ class EAMApp < Sinatra::Base
     start_date = Time.at(params[:datetime].to_i)
     @fuelings = Fueling.where('EQ_equip_no = ? AND ftk_date > ?',
                               params[:name], start_date)
-                       .order('ftk_date DESC')
+                       .order(ftk_date: :desc)
     respond_with_fuelings
   end
 
@@ -44,14 +44,14 @@ class EAMApp < Sinatra::Base
     @fuelings =
       Fueling.where('EQ_equip_no = ? AND ftk_date > ? AND ftk_date < ?',
                     params[:name], start_date, end_date)
-             .order('ftk_date DESC')
+             .order(ftk_date: :desc)
     respond_with_fuelings
   end
 
   get '/all/:datetime' do
     start_date = Time.at(params[:datetime].to_i)
     @fuelings = Fueling.where('ftk_date > ?', start_date)
-                       .order('ftk_date DESC')
+                       .order(ftk_date: :desc)
     respond_with_fuelings
   end
 
@@ -60,7 +60,7 @@ class EAMApp < Sinatra::Base
     end_date = Time.at(params[:end_datetime].to_i)
     @fuelings = Fueling.where('ftk_date > ? AND ftk_date < ?',
                               start_date, end_date)
-                       .order('ftk_date DESC')
+                       .order(ftk_date: :desc)
     respond_with_fuelings
   end
 
