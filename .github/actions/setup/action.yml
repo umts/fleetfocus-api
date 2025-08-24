@@ -12,7 +12,6 @@ runs:
       shell: bash
     - run: sudo apt-get install freetds-dev
       shell: bash
-    - uses: actions/checkout@v1
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
