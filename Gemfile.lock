@@ -53,7 +53,7 @@ GEM
       activemodel (= 8.0.2.1)
       activesupport (= 8.0.2.1)
       timeout (>= 0.4.0)
-    activerecord-sqlserver-adapter (8.0.7)
+    activerecord-sqlserver-adapter (8.0.8)
       activerecord (~> 8.0.0)
       tiny_tds
     activestorage (8.0.2.1)
@@ -368,7 +368,7 @@ CHECKSUMS
   activejob (8.0.2.1) sha256=d6e5f2da07ec8efac13a38af1752416770dc74e95783f7b252506d707aa32b89
   activemodel (8.0.2.1) sha256=17bab6cdb86531844113df22f864480a89a276bf0318246e628f99e0ac077ec4
   activerecord (8.0.2.1) sha256=a6556e7bdd53f3889d18d2aa3a7ff115fd6c5e1463dd06f97fb88d06b58c6df1
-  activerecord-sqlserver-adapter (8.0.7) sha256=2a79983d787ff4713f87f643e05b7c34b6cb680234cf1486400407de86311d49
+  activerecord-sqlserver-adapter (8.0.8) sha256=41bbe7a50e365cdd72c8939d76e80a9adb957dc2237b3f1f1060eff5e7d4f5ca
   activestorage (8.0.2.1) sha256=43bb3d9e115471e201e6a66813810c1d15b607a321f29d62efdf9d90ffaf76f8
   activesupport (8.0.2.1) sha256=0405a76fd1ca989975d9ae00d46a4d3979bdf3817482d846b63affa84bd561c6
   airbrussh (1.5.3) sha256=7b06eb03be15f50120bc03d95967c95144fbbb7a6ad58d4105cd1550c3aa989c
