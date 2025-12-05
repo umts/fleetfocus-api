@@ -41,4 +41,4 @@ USER fleetfocus-api:fleetfocus-api
 
 EXPOSE 80
 
-CMD ["script/server", "--port 80"]
+CMD ["script/server", "--port", "80"]
