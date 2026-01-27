@@ -9,7 +9,7 @@ gem 'irb'
 gem 'json'
 gem 'psych'
 gem 'puma'
-gem 'rails', '~> 8.1.1', install_if: false
+gem 'rails', '~> 8.1.2', install_if: false
 gem 'rake'
 gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-activerecord', require: false
