@@ -17,7 +17,7 @@ gem 'tilt-jbuilder', require: 'sinatra/jbuilder'
 
 group :production, :development do
   gem 'activerecord-sqlserver-adapter'
-  gem 'tiny_tds', force_ruby_platform: true # TODO: Remove dependency completely when have newer GLIBC.
+  gem 'tiny_tds'
 end
 
 group :development do
