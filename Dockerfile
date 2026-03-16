@@ -1,3 +1,8 @@
+# syntax=docker/dockerfile:1
+# check=error=true
+#
+# docker build --tag fleetfocus-api --build-arg RUBY_VERSION="$(cat .ruby-version)" .
+
 ARG RUBY_VERSION=OVERRIDE_ME
 
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim AS base
@@ -41,4 +46,4 @@ USER fleetfocus-api:fleetfocus-api
 
 EXPOSE 80
 
-CMD ["script/server", "--port", "80"]
+CMD ["script/server", "--port=80"]
