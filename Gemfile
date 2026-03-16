@@ -31,10 +31,6 @@ end
 
 group :development do
   gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0', require: false
-  gem 'capistrano', '~> 3.20', require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano-passenger', require: false
-  gem 'capistrano-pending', require: false
   gem 'ed25519', '>= 1.2', '< 2.0', require: false
   gem 'railties', require: false
   gem 'rubocop', require: false
