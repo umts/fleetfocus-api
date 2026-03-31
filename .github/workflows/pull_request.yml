@@ -6,12 +6,12 @@ on:
 jobs:
   integrate-docker:
     name: integrate
-    uses: umts/.github/.github/workflows/integrate-docker.yml@696cf2f1a83be5c6bcba18946552d001ee27a34a
+    uses: umts/.github/.github/workflows/integrate-docker.yml@c3317262d7da3ba37190f8d182a23cd106cf8e8f
   integrate-rspec:
     name: integrate
-    uses: umts/.github/.github/workflows/integrate-rspec.yml@696cf2f1a83be5c6bcba18946552d001ee27a34a
+    uses: umts/.github/.github/workflows/integrate-rspec.yml@c3317262d7da3ba37190f8d182a23cd106cf8e8f
     with:
       setup_command: bin/rake db:prepare
   integrate-rubocop:
     name: integrate
-    uses: umts/.github/.github/workflows/integrate-rubocop.yml@696cf2f1a83be5c6bcba18946552d001ee27a34a
+    uses: umts/.github/.github/workflows/integrate-rubocop.yml@c3317262d7da3ba37190f8d182a23cd106cf8e8f
