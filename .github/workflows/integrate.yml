@@ -1,0 +1,14 @@
+on:
+  workflow_call:
+jobs:
+  docker:
+    name: app
+    uses: umts/.github/.github/workflows/docker.yml@main
+  rspec:
+    name: app
+    uses: umts/.github/.github/workflows/rspec.yml@main
+    with:
+      setup_command: bin/rake db:prepare
+  rubocop:
+    name: app
+    uses: umts/.github/.github/workflows/rubocop.yml@main
