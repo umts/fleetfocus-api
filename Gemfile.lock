@@ -337,9 +337,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-sqlserver-adapter
   activesupport
-  bcrypt_pbkdf (>= 1.0, < 2.0)
   database_cleaner
-  ed25519 (>= 1.2, < 2.0)
   exception_notification
   factory_bot
   irb
