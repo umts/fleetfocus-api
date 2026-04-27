@@ -15,7 +15,7 @@ servers:
     - afs-umts-web4.admin.umass.edu
 proxy:
   ssl: true
-  host: https://transit-fuel-api.admin.umass.edu
+  host: transit-fuel-api.admin.umass.edu
 registry:
   server: localhost:5555
 builder:
