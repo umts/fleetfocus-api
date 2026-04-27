@@ -65,6 +65,7 @@ class EAMApp < Sinatra::Base
   end
 
   get '/up' do
+    ApplicationRecord.connection.execute('SELECT 1')
     200
   end
 
