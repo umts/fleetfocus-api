@@ -17,7 +17,16 @@ gem 'tilt-jbuilder', require: 'sinatra/jbuilder'
 
 group :production, :development do
   gem 'activerecord-sqlserver-adapter'
-  gem 'tiny_tds', force_ruby_platform: true # TODO: Remove dependency completely when have newer GLIBC.
+end
+
+group :development do
+  gem 'kamal', require: false
+  gem 'railties', require: false
+  gem 'rubocop', require: false
+  gem 'rubocop-factory_bot', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rake', require: false
+  gem 'rubocop-rspec', require: false
 end
 
 group :test do
@@ -27,19 +36,4 @@ group :test do
   gem 'rspec'
   gem 'simplecov', require: false
   gem 'sqlite3', '>= 2.1'
-end
-
-group :development do
-  gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0', require: false
-  gem 'capistrano', '~> 3.20', require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano-passenger', require: false
-  gem 'capistrano-pending', require: false
-  gem 'ed25519', '>= 1.2', '< 2.0', require: false
-  gem 'railties', require: false
-  gem 'rubocop', require: false
-  gem 'rubocop-factory_bot', require: false
-  gem 'rubocop-rails', require: false
-  gem 'rubocop-rake', require: false
-  gem 'rubocop-rspec', require: false
 end
