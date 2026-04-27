@@ -17,7 +17,6 @@ gem 'tilt-jbuilder', require: 'sinatra/jbuilder'
 
 group :production, :development do
   gem 'activerecord-sqlserver-adapter'
-  gem 'tiny_tds'
 end
 
 group :development do

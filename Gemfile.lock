@@ -360,7 +360,6 @@ DEPENDENCIES
   sinatra-activerecord
   sqlite3 (>= 2.1)
   tilt-jbuilder
-  tiny_tds
 
 CHECKSUMS
   action_text-trix (2.1.18) sha256=3fdb83f8bff4145d098be283cdd47ac41caf5110bfa6df4695ed7127d7fb3642
