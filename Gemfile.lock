@@ -150,7 +150,7 @@ GEM
       prism (~> 1.5)
     mustermann (3.0.4)
       ruby2_keywords (~> 0.0.1)
-    net-imap (0.5.12)
+    net-imap (0.5.14)
       date
       net-protocol
     net-pop (0.1.2)
@@ -313,7 +313,7 @@ GEM
     tilt-jbuilder (0.7.1)
       jbuilder
       tilt (>= 1.3.0, < 3)
-    timeout (0.4.4)
+    timeout (0.6.1)
     tiny_tds (3.4.0)
       bigdecimal (>= 2.0.0)
     tsort (0.2.0)
@@ -413,7 +413,7 @@ CHECKSUMS
   mini_portile2 (2.8.9) sha256=0cd7c7f824e010c072e33f68bc02d85a00aeb6fce05bb4819c03dfd3c140c289
   minitest (6.0.2) sha256=db6e57956f6ecc6134683b4c87467d6dd792323c7f0eea7b93f66bd284adbc3d
   mustermann (3.0.4) sha256=85fadcb6b3c6493a8b511b42426f904b7f27b282835502233dd154daab13aa22
-  net-imap (0.5.12) sha256=cb8cd05bd353fcc19b6cbc530a9cb06b577a969ea10b7ddb0f37787f74be4444
+  net-imap (0.5.14) sha256=1590ca018d65d4165b7324a3f046dd16fd9dd5e72deba4acf494c1becdb55a04
   net-pop (0.1.2) sha256=848b4e982013c15b2f0382792268763b748cce91c9e91e36b0f27ed26420dff3
   net-protocol (0.2.2) sha256=aa73e0cba6a125369de9837b8d8ef82a61849360eba0521900e2c3713aa162a8
   net-scp (4.1.0) sha256=a99b0b92a1e5d360b0de4ffbf2dc0c91531502d3d4f56c28b0139a7c093d1a5d
@@ -472,7 +472,7 @@ CHECKSUMS
   thor (1.5.0) sha256=e3a9e55fe857e44859ce104a84675ab6e8cd59c650a49106a05f55f136425e73
   tilt (2.6.1) sha256=35a99bba2adf7c1e362f5b48f9b581cce4edfba98117e34696dde6d308d84770
   tilt-jbuilder (0.7.1) sha256=f5841fd18217f6400a8894c3160190edc5dd3041063f854a388095ff6c732862
-  timeout (0.4.4) sha256=f0f6f970104b82427cd990680f539b6bbb8b1e55efa913a55c6492935e4e0edb
+  timeout (0.6.1) sha256=78f57368a7e7bbadec56971f78a3f5ecbcfb59b7fcbb0a3ed6ddc08a5094accb
   tiny_tds (3.4.0) sha256=b43e1475cc4b2fa6674847a6a5b72aed99d3332840e1a9f195ca8b1f68653688
   tsort (0.2.0) sha256=9650a793f6859a43b6641671278f79cfead60ac714148aabe4e3f0060480089f
   tzinfo (2.0.6) sha256=8daf828cc77bcf7d63b0e3bdb6caa47e2272dcfaf4fbfe46f8c3a9df087a829b
