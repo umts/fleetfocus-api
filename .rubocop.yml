@@ -6,7 +6,10 @@ plugins:
 
 AllCops:
   Exclude:
-    - bin/**/*
+    - bin/puma
+    - bin/rake
+    - bin/rspec
+    - bin/rubocop
     - config/**/*
     - db/schema.rb
     - vendor/**/*
