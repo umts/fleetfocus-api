@@ -1,9 +1,9 @@
 *
 
+!/bin/
 !/config/
 !/db/
 !/lib/
-!/script/server
 !/views/
 !/.ruby-version
 !/config.ru

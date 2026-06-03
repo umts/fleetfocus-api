@@ -7,7 +7,7 @@ production:
   reconnect: true
 
 # Because our application never writes to the database, you can tunnel
-# through the production server to the prod database by running `script/tunnel`.
+# through the production server to the prod database by running `bin/tunnel`.
 #
 # The MS-SQL username specified here only needs read-only access to the `FTK_MAIN` table.
 development:
