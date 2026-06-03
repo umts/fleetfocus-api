@@ -70,10 +70,10 @@ Scripts
 ```bash
 bin/bundle     # install dependencies
 bin/console    # run irb
+bin/dev        # run development server - requires database tunnel
 bin/rake       # run tasks
 bin/rspec      # run specs
 bin/rubocop    # run linter
-bin/server     # run server - requires database tunnel
 bin/setup      # set up development environment
 bin/tunnel     # open a database tunnel to the production server - requires ssh access, vpn connection, credentials key
 ```
