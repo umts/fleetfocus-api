@@ -62,20 +62,20 @@ Setup
 -----
 1) Install ruby. (`rbenv install`)
 2) Ensure you have [freetds](https://www.freetds.org/) installed. If you're on macOS, you can download this through homebrew: `brew install freetds`
-3) Run the setup script. (`script/setup`)
+3) Run the setup script. (`bin/setup`)
 4) Place the credentials key file in `config/fleetfocus-api.key`. (Get from KeePass or another developer)
 
 Scripts
 -------
 ```bash
 bin/bundle     # install dependencies
+bin/console    # run irb
+bin/dev        # run development server - requires database tunnel
 bin/rake       # run tasks
 bin/rspec      # run specs
 bin/rubocop    # run linter
-script/console # run irb
-script/server  # run server - requires database tunnel
-script/setup   # set up development environment
-script/tunnel  # open a database tunnel to the production server - requires ssh access, vpn connection, credentials key
+bin/setup      # set up development environment
+bin/tunnel     # open a database tunnel to the production server - requires ssh access, vpn connection, credentials key
 ```
 
 License
