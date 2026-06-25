@@ -17,7 +17,7 @@ FileUtils.chdir APP_ROOT do
 
   puts '== Installing dependencies =='
   system! 'gem install bundler --conservative'
-  system! 'bin/bundle install' unless system 'bin/bundle check'
+  system! 'bundle install' unless system 'bundle check'
   system 'if command -v rbenv &> /dev/null; then rbenv rehash; fi'
 
   puts "\n== Preparing database =="
