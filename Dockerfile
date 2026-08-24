@@ -2,12 +2,10 @@
 # check=error=true
 
 # This Dockerfile is designed for production, not development. Use with Kamal or build'n'run by hand:
-# docker build --tag fleetfocus-api --build-arg RUBY_VERSION="$(cat .ruby-version)" .
+# docker build --tag fleetfocus-api .
 # docker run --interactive --tty --publish 80:80 --env MASTER_KEY="$(cat config/fleetfocus-api.key)" fleetfocus-api
 
-# Make sure RUBY_VERSION matches the Ruby version in .ruby-version
-ARG RUBY_VERSION=OVERRIDE_ME
-FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
+FROM ruby:3.4.8-slim AS base
 
 # App lives here
 WORKDIR /app
