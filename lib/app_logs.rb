@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pathname'
-
 module AppLogs
   class << self
     def registered(app)
