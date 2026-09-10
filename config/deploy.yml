@@ -6,12 +6,6 @@
 
 service: fleetfocus-api
 image: umts/fleetfocus-api
-servers:
-  web:
-    - afs-umts-web4.admin.umass.edu
-proxy:
-  ssl: true
-  host: transit-fuel-api.admin.umass.edu
 registry:
   server: ghcr.io
   username: username
@@ -19,9 +13,17 @@ registry:
     - KAMAL_REGISTRY_PASSWORD
 builder:
   arch: amd64
+labels:
+  org.opencontainers.image.source: "https://github.com/umts/fleetfocus-api"
+servers:
+  web:
+    - afs-umts-web4.admin.umass.edu
+proxy:
+  ssl: true
+  host: transit-fuel-api.admin.umass.edu
 env:
   clear:
-    TZ: 'America/New_York'
+    TZ: America/New_York
   secret:
     - MASTER_KEY
 ssh:
