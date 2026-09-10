@@ -13,7 +13,10 @@ proxy:
   ssl: true
   host: transit-fuel-api.admin.umass.edu
 registry:
-  server: localhost:5555
+  server: ghcr.io
+  username: username
+  password:
+    - KAMAL_REGISTRY_PASSWORD
 builder:
   arch: amd64
 env:
