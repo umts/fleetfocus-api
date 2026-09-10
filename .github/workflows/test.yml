@@ -3,7 +3,9 @@ permissions:
   contents: read
   packages: write
 on:
-  pull_request:
+  push:
+    branches:
+      - benmelz/kamal-test
 jobs:
   kamal-push:
     runs-on: ubuntu-latest
