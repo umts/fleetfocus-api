@@ -1,0 +1,19 @@
+name: test
+permissions:
+  contents: read
+  packages: write
+on:
+  push:
+    branches:
+      - benmelz/kamal-test
+jobs:
+  kamal-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bundle exec kamal build push
+        env:
+          KAMAL_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
