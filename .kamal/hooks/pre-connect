@@ -1,5 +1,9 @@
 #!/usr/bin/env ruby
 
+if ENV["CI"]
+  exit 0
+end
+
 require "bundler/inline"
 
 # true = install gems so this is fast on repeat invocations
