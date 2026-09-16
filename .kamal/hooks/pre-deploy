@@ -45,7 +45,7 @@ class GithubStatusChecks
   def initialize
     @remote_url = github_repo_from_remote_url
     @git_sha = `git rev-parse HEAD`.strip
-    @github_client = Octokit::Client.new(access_token: ENV["GITHUB_TOKEN"])
+    @github_client = Octokit::Client.new(access_token: `gh auth token`)
     refresh!
   end
 
