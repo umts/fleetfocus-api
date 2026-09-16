@@ -1,26 +1,5 @@
 #!/usr/bin/env ruby
 
-# A sample pre-deploy hook
-#
-# Checks the Github status of the build, waiting for a pending build to complete for up to 720 seconds.
-#
-# Fails unless the combined status is "success"
-#
-# These environment variables are available:
-# KAMAL_RECORDED_AT
-# KAMAL_PERFORMER
-# KAMAL_VERSION
-# KAMAL_HOSTS
-# KAMAL_COMMAND
-# KAMAL_SUBCOMMAND
-# KAMAL_ROLES (if set)
-# KAMAL_DESTINATION (if set)
-
-# Only check the build status for production deployments
-if ENV["KAMAL_COMMAND"] == "rollback" || ENV["KAMAL_DESTINATION"] != "production"
-  exit 0
-end
-
 require "bundler/inline"
 
 # true = install gems so this is fast on repeat invocations
@@ -95,6 +74,10 @@ end
 $stdout.sync = true
 
 begin
+  if `git rev-parse HEAD`.strip != `git ls-remote origin HEAD`.split.first
+    exit_with_error "Invalid HEAD (must be on up to date default branch)"
+  end
+
   puts "Checking build status..."
 
   attempts = 0
