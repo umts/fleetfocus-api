@@ -5,7 +5,7 @@
 # docker build --tag fleetfocus-api .
 # docker run --interactive --tty --publish 80:80 --env MASTER_KEY="$(cat config/fleetfocus-api.key)" fleetfocus-api
 
-FROM ruby:4.0.6-slim@sha256:58479f164d5947f852da27a4436c89bb986a811f959c40552bc7f6ccaabcc9c9 AS base
+FROM ruby:4.0.7-slim@sha256:268a5add730705f1a6e2518737b3eb3fe6bd5007258f0ac9f09f6811c6025d88 AS base
 
 # App lives here
 WORKDIR /app
