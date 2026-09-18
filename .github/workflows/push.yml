@@ -13,4 +13,4 @@ jobs:
     permissions:
       contents: read
       packages: write
-    uses: umts/shared-workflows/.github/workflows/ghcr-kamal.yml@d82f3a191645340d5504873d32ca683ebf3c040a
+    uses: umts/shared-workflows/.github/workflows/ghcr-kamal.yml@500d3970eed1634887f353390959a88a3a0cecfc
