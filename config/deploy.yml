@@ -4,7 +4,7 @@ service: fleetfocus-api
 image: umts/fleetfocus-api
 registry:
   server: ghcr.io
-  username: username
+  username: not_needed
   password:
     - KAMAL_REGISTRY_PASSWORD
 builder:
