@@ -5,7 +5,6 @@ on:
       - provenance
 jobs:
   deploy:
-    needs: integrate
     permissions:
       contents: read
       packages: write
