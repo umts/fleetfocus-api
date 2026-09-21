@@ -1,7 +1,7 @@
 # <% def user_for(host) = Net::SSH::Config.for(host).fetch(:user, ENV.fetch('USER', nil)) %>
 
-service: fleetfocus-api
-image: umts/fleetfocus-api
+service: %%REPLACE_ME%%
+image: umts/%%REPLACE_ME%%
 registry:
   server: ghcr.io
   username: not_needed
@@ -12,19 +12,19 @@ builder:
   provenance: false
   sbom: false
 labels:
-  org.opencontainers.image.source: "https://github.com/umts/fleetfocus-api"
+  org.opencontainers.image.source: "https://github.com/umts/%%REPLACE_ME%%"
 servers:
   web:
-    - afs-umts-web4.admin.umass.edu
+    - %%REPLACE_ME%%
 proxy:
   ssl: true
-  host: transit-fuel-api.admin.umass.edu
+  host: %%REPLACE_ME%%
 env:
   clear:
     TZ: America/New_York
   secret:
     - MASTER_KEY
 ssh:
-  user: <%= user_for 'afs-umts-web4.admin.umass.edu' %>
+  user: <%= user_for '%%REPLACE_ME%%' %>
 volumes:
-  - "fleetfocus-api_log:/app/log"
+  - "%%FILL_ME_IN%%"
