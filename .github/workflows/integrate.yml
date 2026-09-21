@@ -3,12 +3,12 @@ on:
 jobs:
   docker:
     name: app
-    uses: umts/shared-workflows/.github/workflows/docker.yml@main
+    uses: umts/shared-workflows/.github/workflows/docker.yml@03622b57083fb7eeedc0b9b05fb53a93574f966d # main
   rspec:
     name: app
-    uses: umts/shared-workflows/.github/workflows/rspec.yml@main
+    uses: umts/shared-workflows/.github/workflows/rspec.yml@03622b57083fb7eeedc0b9b05fb53a93574f966d # main
     with:
       setup_command: bin/rake db:prepare
   rubocop:
     name: app
-    uses: umts/shared-workflows/.github/workflows/rubocop.yml@main
+    uses: umts/shared-workflows/.github/workflows/rubocop.yml@03622b57083fb7eeedc0b9b05fb53a93574f966d # main
