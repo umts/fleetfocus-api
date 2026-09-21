@@ -9,6 +9,8 @@ registry:
     - KAMAL_REGISTRY_PASSWORD
 builder:
   arch: amd64
+  provenance: false
+  sbom: false
 labels:
   org.opencontainers.image.source: "https://github.com/umts/fleetfocus-api"
 servers:
