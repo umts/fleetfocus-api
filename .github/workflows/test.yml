@@ -1,0 +1,12 @@
+name: test
+on:
+  push:
+    branches:
+      - provenance
+jobs:
+  deploy:
+    needs: integrate
+    permissions:
+      contents: read
+      packages: write
+    uses: umts/shared-workflows/.github/workflows/ghcr-kamal.yml@500d3970eed1634887f353390959a88a3a0cecfc
