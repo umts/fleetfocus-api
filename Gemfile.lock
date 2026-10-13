@@ -56,7 +56,7 @@ GEM
       activemodel (= 8.1.4)
       activesupport (= 8.1.4)
       timeout (>= 0.4.0)
-    activerecord-sqlserver-adapter (8.1.3)
+    activerecord-sqlserver-adapter (8.1.4)
       activerecord (~> 8.1.0)
       tiny_tds (~> 3.0)
     activestorage (8.1.4)
@@ -314,9 +314,9 @@ GEM
       jbuilder
       tilt (>= 1.3.0, < 3)
     timeout (0.6.1)
-    tiny_tds (3.4.0)
+    tiny_tds (3.4.1)
       bigdecimal (>= 2.0.0)
-    tiny_tds (3.4.0-x86_64-linux-gnu)
+    tiny_tds (3.4.1-x86_64-linux-gnu)
       bigdecimal (>= 2.0.0)
     tsort (0.2.0)
     tzinfo (2.0.6)
@@ -324,7 +324,7 @@ GEM
     unicode-display_width (3.3.0)
       unicode-emoji (~> 4.3)
     unicode-emoji (4.3.0)
-    uri (1.1.1)
+    uri (1.1.2)
     useragent (0.16.11)
     websocket-driver (0.8.2)
       base64
@@ -374,7 +374,7 @@ CHECKSUMS
   activejob (8.1.4) sha256=4ed5b2ed8d4cc5c8f5f09becfef8346f202a4884eee0c8c73cae5ac378824099
   activemodel (8.1.4) sha256=9a0906c127bd118aa5f06157db12b8f750da83dccee72db2f658547a0ae7a0e8
   activerecord (8.1.4) sha256=3b4957ea7f246c9231bd7faa909312eac03a9101aaf87977b6c52733ff00b04f
-  activerecord-sqlserver-adapter (8.1.3) sha256=f7410368b312d6f551b0c463ff2a53b3e52d0bd9315005011d85c88aa325e968
+  activerecord-sqlserver-adapter (8.1.4) sha256=15744e8167db45c02b3e7dbe6467cf2a05792ecddb026015d26fd37617f23c89
   activestorage (8.1.4) sha256=f4956f3ec9ee63e5e0b332b57c877cb627f82b56f4cc902279310d2aa285c7a8
   activesupport (8.1.4) sha256=891dd3fe43c4fc8391934b237b1189bb1f661c932a84a840043db9d46a4e80df
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
@@ -474,13 +474,13 @@ CHECKSUMS
   tilt (2.6.1) sha256=35a99bba2adf7c1e362f5b48f9b581cce4edfba98117e34696dde6d308d84770
   tilt-jbuilder (0.7.1) sha256=f5841fd18217f6400a8894c3160190edc5dd3041063f854a388095ff6c732862
   timeout (0.6.1) sha256=78f57368a7e7bbadec56971f78a3f5ecbcfb59b7fcbb0a3ed6ddc08a5094accb
-  tiny_tds (3.4.0) sha256=b43e1475cc4b2fa6674847a6a5b72aed99d3332840e1a9f195ca8b1f68653688
-  tiny_tds (3.4.0-x86_64-linux-gnu) sha256=56a25e44e8c71432c1e69577cb56893048a949efa7fd839a48efaec88e603b2e
+  tiny_tds (3.4.1) sha256=9af4e7aa3a93cd9e8a2d74ce4ba147ed60a91d35617d70cdc508f3e60aa48d94
+  tiny_tds (3.4.1-x86_64-linux-gnu) sha256=732de2afa835dec6b0b248d1ce45fa82aa636c62df842507de5f1b2a112d9bc6
   tsort (0.2.0) sha256=9650a793f6859a43b6641671278f79cfead60ac714148aabe4e3f0060480089f
   tzinfo (2.0.6) sha256=8daf828cc77bcf7d63b0e3bdb6caa47e2272dcfaf4fbfe46f8c3a9df087a829b
   unicode-display_width (3.3.0) sha256=4b7aa66a4b11db50f6f7e98411215cd0dd10eaecb665d36eec5bcacb3fa0b613
   unicode-emoji (4.3.0) sha256=11c02fa73290378c066bb0562cd4c87d8e1b706fbbe0059ca12746a4244de8ce
-  uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
+  uri (1.1.2) sha256=89292e98eabbef6248b0a0ed5e7e398e152f83f17560023a6d94a7f492b169fb
   useragent (0.16.11) sha256=700e6413ad4bb954bb63547fa098dddf7b0ebe75b40cc6f93b8d54255b173844
   websocket-driver (0.8.2) sha256=97c556b019bf3410b4961002ac501621e9322d3f8a7bc02161a09301cc4c4146
   websocket-extensions (0.1.5) sha256=1c6ba63092cda343eb53fc657110c71c754c56484aad42578495227d717a8241
